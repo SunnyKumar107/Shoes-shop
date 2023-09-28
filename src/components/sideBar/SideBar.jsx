@@ -1,13 +1,13 @@
 import React from "react";
-import "./SideBar.css";
-import Category from "./Category";
-import Price from "./Price";
-import Colors from "./Colors";
+import Styles from "./SideBar.module.css";
+import Category from "./category/Category";
+import Price from "./price/Price";
+import Colors from "./colors/Colors";
 
 function SideBar() {
   return (
-    <div className="sideBar">
-      <div className="logo">
+    <div className={Styles.sideBar}>
+      <div className={Styles.logo}>
         <h1>
           <i class="fa-sharp fa-solid fa-cart-shopping"></i>
         </h1>

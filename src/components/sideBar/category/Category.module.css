@@ -1,0 +1,14 @@
+.category h3 {
+  margin-bottom: 10px;
+}
+
+.category_type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 8rem;
+}
+
+.category_type label .checkmark {
+  margin-left: 10px;
+}

@@ -1,12 +1,12 @@
 import React from "react";
-import "./CardContainer.css";
+import Styles from "./CardContainer.module.css";
 import Card from "../card/Card";
 import data from "../../db/data";
 import { NavLink } from "react-router-dom";
 
 function CardContainer() {
   return (
-    <div className="card_container">
+    <div className={Styles.card_container}>
       {data.map((e) => (
         <NavLink to="/productDetails">
           <Card
