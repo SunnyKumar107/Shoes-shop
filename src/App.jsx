@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import SideBar from "./components/sideBar/SideBar";
 import CardContainer from "./components/cardContainer/CardContainer";
+import ProductDetails from "./components/productDetails/ProductDetails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<CardContainer />} />
+          <Route path="/productDetails" element={<ProductDetails />} />
         </Routes>
       </Router>
     </div>

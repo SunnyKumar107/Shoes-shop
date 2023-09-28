@@ -1,0 +1,42 @@
+.product_details {
+  margin-left: 14rem;
+  margin-top: 25px;
+  display: flex;
+}
+
+.product_details img {
+  width: 28rem;
+  margin-right: 5rem;
+}
+
+.full_details h2 {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.full_details .star {
+  color: #e3e700;
+  margin-bottom: 5px;
+}
+
+.full_details h4 {
+  margin: 20px 0;
+}
+
+.product_quality {
+  font-size: 1.2rem;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 8px 10px;
+  background-color: #28c700;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1e9700;
+}
