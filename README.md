@@ -9,7 +9,7 @@ Provide a brief introduction to your eCommerce project. Include its purpose, key
 
 To see the website visit:
 
-https://commercialproject.netlify.app
+https://ecommercialproject.netlify.app
 
 
 Installation
