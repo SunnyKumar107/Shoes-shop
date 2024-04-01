@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3003/products";
+const baseUrl = "/api/products";
 
 const getAll = async () => {
   const response = await axios.get(baseUrl);
