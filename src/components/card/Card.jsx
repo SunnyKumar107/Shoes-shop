@@ -10,17 +10,17 @@ function Card(props) {
         <div className={Styles.card_details}>
           <h3 className={Styles.card_title}>{props.title}</h3>
           <div className={Styles.card_reviews}>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
           <div className={Styles.card_price}>
             <div className={Styles.price}>
               <del>{props.prevPrice}</del> {props.newPrice}
             </div>
             <div className={Styles.bag}>
-              <i class="fa-solid fa-bag-shopping"></i>
+              <i className="fa-solid fa-bag-shopping"></i>
             </div>
           </div>
         </div>

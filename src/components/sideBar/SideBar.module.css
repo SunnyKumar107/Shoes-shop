@@ -15,3 +15,26 @@
   margin-left: 2rem;
   margin-bottom: 2.5rem;
 }
+
+.filter_type h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.filter_box label .checkmark {
+  margin-left: 10px;
+}
+
+.filter_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 8rem;
+}
+
+/* .category_type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 8.5rem;
+} */
