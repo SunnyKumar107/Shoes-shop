@@ -7,7 +7,7 @@ function CardContainer({ products }) {
     <div className={Styles.card_container}>
       {products.map((e) => (
         <Card
-          ID={e.ID}
+          id={e.id}
           img={e.img}
           title={e.title}
           prevPrice={e.prevPrice}

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
 import Styles from "./ProductDetails.module.css";
 import { useParams } from "react-router-dom";
 
 function ProductDetails({ products }) {
   const id = useParams().id;
-  const product = products.find((product) => product.ID == id);
+  const product = products.find((product) => product.id == id);
 
   if (!product) {
     return null;
@@ -16,10 +15,10 @@ function ProductDetails({ products }) {
       <div className={Styles.full_details}>
         <h2>{product.title}</h2>
         <div className={Styles.star}>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
         </div>
         <h5 className={Styles.reviews}>({product.reviews})</h5>
         <h4>
