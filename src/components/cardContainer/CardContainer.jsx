@@ -1,12 +1,11 @@
 import React from "react";
 import Styles from "./CardContainer.module.css";
 import Card from "../card/Card";
-import Product from "../../db/Product";
 
-function CardContainer() {
+function CardContainer({ products }) {
   return (
     <div className={Styles.card_container}>
-      {Product.map((e) => (
+      {products.map((e) => (
         <Card
           ID={e.ID}
           img={e.img}

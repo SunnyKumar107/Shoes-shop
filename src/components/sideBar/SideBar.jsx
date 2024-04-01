@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "./SideBar.module.css";
 import Category from "./category/Category";
 import Price from "./price/Price";
-import Colors from "./colors/Colors";
+import ShoesColor from "./shoesColor/ShoesColor";
 import { NavLink } from "react-router-dom";
 
 function SideBar() {
@@ -17,7 +17,7 @@ function SideBar() {
       </NavLink>
       <Category />
       <Price />
-      <Colors />
+      <ShoesColor />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
-import Styles from "./Colors.module.css";
+import Styles from "./ShoesColor.module.css";
 
-function Colors() {
+function ShoesColor() {
   return (
     <div className={Styles.colors}>
       <h3>Colors</h3>
@@ -35,4 +35,4 @@ function Colors() {
   );
 }
 
-export default Colors;
+export default ShoesColor;
