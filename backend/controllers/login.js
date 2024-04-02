@@ -6,11 +6,6 @@ const jwt = require("jsonwebtoken");
 loginRouter.post("/", async (request, response, next) => {
   const { email, password } = request.body;
   try {
-    if (email.length < 6 || password.length < 6) {
-      return response
-        .status(400)
-        .json({ error: "Email or Passsword must be 6 laters" });
-    }
     const user = await User.findOne({ email });
     const correctPassword = !user
       ? false
@@ -29,7 +24,7 @@ loginRouter.post("/", async (request, response, next) => {
       expiresIn: 60 * 60,
     });
 
-    response.status(200).send({
+    response.status(200).json({
       email: user.email,
       name: user.name,
       token,

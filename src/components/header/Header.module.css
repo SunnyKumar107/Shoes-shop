@@ -2,11 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #fff;
   border-bottom: 2px solid #f3f3f3;
-  background: #fff;
   padding: 20px;
   z-index: 0;
-  margin-left: 2rem;
   position: sticky;
   top: 0;
 }
@@ -23,7 +22,7 @@
   width: 14rem;
 }
 
-.nav_icons {
+.right_side {
   width: 7rem;
   margin-left: 2rem;
   margin-right: 4rem;
@@ -32,6 +31,10 @@
   justify-content: space-between;
 }
 
-.nav_icons i {
-  font-size: 1.2rem;
+.right_side i {
+  font-size: 1.5rem;
+}
+
+.right_side i:hover {
+  color: #000;
 }

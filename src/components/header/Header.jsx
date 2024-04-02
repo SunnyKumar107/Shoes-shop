@@ -2,9 +2,18 @@ import React from "react";
 import Styles from "./Header.module.css";
 import { useDispatch } from "react-redux";
 import { searchByText } from "../../reducers/productReducer";
+import { NavLink, useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({ user, onHandleLogout }) {
+  const username = user.name.split(" ")[0];
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+    onHandleLogout();
+  };
 
   return (
     <div className={Styles.header}>
@@ -16,16 +25,16 @@ function Header() {
           onChange={(e) => dispatch(searchByText(e.target.value))}
         />
       </div>
-      <div className={Styles.nav_icons}>
-        <a href="">
-          <i className="fa-regular fa-heart"></i>
-        </a>
-        <a href="">
+      <div className={Styles.right_side}>
+        <NavLink>
           <i className="fa-solid fa-cart-shopping"></i>
-        </a>
-        <a href="">
-          <i className="fa-solid fa-user-plus"></i>
-        </a>
+        </NavLink>
+        <NavLink>
+          <i
+            className="fa-solid fa-right-from-bracket"
+            onClick={handleLogout}
+          ></i>
+        </NavLink>
       </div>
     </div>
   );

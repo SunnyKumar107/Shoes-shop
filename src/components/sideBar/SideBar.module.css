@@ -16,6 +16,10 @@
   margin-bottom: 2rem;
 }
 
+.sideBar .logo:hover {
+  color: #000;
+}
+
 .filter_type h3 {
   margin-top: 10px;
   margin-bottom: 5px;

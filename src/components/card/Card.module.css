@@ -1,6 +1,5 @@
 .card {
   margin: 20px;
-  border: 2px solid #ededed;
   padding: 20px;
   cursor: pointer;
   display: flex;
@@ -8,6 +7,14 @@
   justify-content: space-around;
   width: 14rem;
   height: 20.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #c2c1c1;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
 }
 
 .card_img {
@@ -47,4 +54,8 @@
 
 .card_price .price del {
   color: #5c5b5a;
+}
+
+.card_price .bag:hover {
+  color: #000;
 }
