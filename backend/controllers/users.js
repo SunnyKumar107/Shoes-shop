@@ -25,10 +25,9 @@ usersRouter.post("/", async (request, response, next) => {
       });
     }
 
-    const userExist = User.findOne({ email });
-
+    const userExist = await User.findOne({ email });
     if (userExist) {
-      return response.status(400).json({ error: "Email already exists" });
+      return response.status(401).json({ error: "Email already exists" });
     }
 
     const saltRounds = 10;

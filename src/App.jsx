@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { initializeProducts } from "./reducers/productReducer";
 import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
+import Register from "./components/Register/Register";
+import usersService from "./services/users";
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -28,11 +30,24 @@ function App() {
     dispatch(logoutUser());
   };
 
+  const handleRegister = async ({ email, name, password }) => {
+    const newUser = await usersService.create({
+      email: email,
+      name: name,
+      password: password,
+    });
+    console.log("newUser", newUser);
+  };
+
   if (!user) {
     return (
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage onHandleLogin={handleLogin} />} />
+          <Route
+            path="/register"
+            element={<Register onHandleRegister={handleRegister} />}
+          />
         </Routes>
       </Router>
     );

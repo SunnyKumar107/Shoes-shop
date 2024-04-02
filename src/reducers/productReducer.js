@@ -42,8 +42,12 @@ export const filterProducts = (type) => {
         dispatch(setProducts(filteredByCategory));
         break;
       case priceType:
-        const filteredByPrice = allProduct.filter((p) => p.newPrice > type);
-        dispatch(setProducts(filteredByPrice));
+        const filterByType = allProduct.filter((p) => p.newPrice > type);
+
+        // const lessPrice = type + 50;
+        // const filtered = filteredByPrice.filter((p) => p.newPrice < lessPrice);
+        // console.log(filtered);
+        dispatch(setProducts(filterByType));
         break;
       default:
         dispatch(setProducts(allProduct));
