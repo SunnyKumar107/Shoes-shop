@@ -14,12 +14,23 @@ usersRouter.get("/", async (request, response, next) => {
 usersRouter.post("/", async (request, response, next) => {
   const { email, name, password } = request.body;
 
-  if (email.length < 6 || password.length < 6) {
-    return response
-      .status(400)
-      .json({ error: "Email or Password must be at least 6 characters long" });
-  }
   try {
+    if (!email || !name || !password) {
+      return response.status(400).json({ error: "Please fill all fields" });
+    }
+
+    if (email.length < 6 || password.length < 6) {
+      return response.status(400).json({
+        error: "Email or Password must be at least 6 characters long",
+      });
+    }
+
+    const userExist = User.findOne({ email });
+
+    if (userExist) {
+      return response.status(400).json({ error: "Email already exists" });
+    }
+
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
