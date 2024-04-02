@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Styles from "./Register.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = ({ onHandleRegister }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onHandleRegister({ email, name, password });
+  const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await onHandleRegister({ email, name, password });
+
+    navigate("/login");
     setEmail("");
     setName("");
     setPassword("");
@@ -53,7 +56,7 @@ const Register = ({ onHandleRegister }) => {
         <button type="submit">Register</button>
         <div className={Styles.have_or_not}>
           <p>Already have an account?</p>{" "}
-          <NavLink to="/">
+          <NavLink to="/login">
             <span>Log in</span>
           </NavLink>
         </div>

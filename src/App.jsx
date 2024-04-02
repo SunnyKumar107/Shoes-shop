@@ -10,6 +10,7 @@ import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
+import HomePage from "./components/HomePage/Home";
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -43,7 +44,11 @@ function App() {
     return (
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage onHandleLogin={handleLogin} />} />
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/login"
+            element={<LoginPage onHandleLogin={handleLogin} />}
+          />
           <Route
             path="/register"
             element={<Register onHandleRegister={handleRegister} />}

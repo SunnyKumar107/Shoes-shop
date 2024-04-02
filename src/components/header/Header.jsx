@@ -5,13 +5,13 @@ import { searchByText } from "../../reducers/productReducer";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function Header({ user, onHandleLogout }) {
-  const username = user.name.split(" ")[0];
+  // const username = user.name.split(" ")[0];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/");
+    navigate("/login");
     onHandleLogout();
   };
 
