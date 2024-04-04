@@ -12,7 +12,7 @@ function CardContainer({ products }) {
           title={e.title}
           prevPrice={e.prevPrice}
           newPrice={e.newPrice}
-          key={Math.random()}
+          key={e.id}
         />
       ))}
     </div>
