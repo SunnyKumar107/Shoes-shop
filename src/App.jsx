@@ -7,7 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { initializeProducts } from "./reducers/productReducer";
 import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
-import { initializeCarts, removeItem } from "./reducers/cartsReducer";
+import {
+  initializeCarts,
+  orderPlaced,
+  removeItem,
+} from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
 import Cart from "./components/productCart/Cart";
@@ -46,6 +50,10 @@ function App() {
     dispatch(removeItem(id));
   };
 
+  const handlePlaceOrder = () => {
+    dispatch(orderPlaced());
+  };
+
   if (!user) {
     return (
       <Router>
@@ -75,6 +83,7 @@ function App() {
             <Cart
               cartItems={cartItems}
               onHandleRemoveToCart={handleRemoveToCart}
+              onHandlePlaceOrder={handlePlaceOrder}
             />
           }
         />

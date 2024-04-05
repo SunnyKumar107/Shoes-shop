@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "./Cart.module.css";
 import { NavLink } from "react-router-dom";
 
-const Cart = ({ cartItems, onHandleRemoveToCart }) => {
+const Cart = ({ cartItems, onHandleRemoveToCart, onHandlePlaceOrder }) => {
   if (cartItems.length === 0) {
     return (
       <div className={Styles.empty_cart}>
@@ -16,6 +16,17 @@ const Cart = ({ cartItems, onHandleRemoveToCart }) => {
       </div>
     );
   }
+
+  const handlePlaceOrder = () => {
+    onHandlePlaceOrder();
+  };
+
+  const priceInNumber = cartItems.map((e) => Number(e.newPrice));
+  const cartTotal = priceInNumber.reduce((a, b) => a + b, 0);
+  const discount = (cartTotal * 10) / 100;
+  const tax = (cartTotal * 15) / 100;
+
+  const orderTotal = cartTotal - discount + tax;
 
   return (
     <div className={Styles.cart}>
@@ -36,14 +47,6 @@ const Cart = ({ cartItems, onHandleRemoveToCart }) => {
         <div className={Styles.cart_container}>
           <div className={Styles.cart_items}>
             {cartItems.map((e) => (
-              // <Card
-              //   id={e.id}
-              //   img={e.img}
-              //   title={e.title}
-              //   prevPrice={e.prevPrice}
-              //   newPrice={e.newPrice}
-              //   key={e.id}
-              // />
               <div key={e.id} className={Styles.product_in_cart}>
                 <div className={Styles.img_container}>
                   <img src={e.img} alt={e.img} />
@@ -70,22 +73,24 @@ const Cart = ({ cartItems, onHandleRemoveToCart }) => {
             <h2>Price Details</h2>
             <div className={Styles.detail_container}>
               <div className={Styles.list_type}>
-                Cart Total <span>$400</span>
+                Cart Total <span>${cartTotal}</span>
               </div>
               <div className={Styles.list_type}>
-                Cart Discount <span>25</span>
+                Cart Discount <span>{discount}</span>
               </div>
               <div className={Styles.list_type}>
                 Delivery <span>0</span>
               </div>
               <div className={Styles.list_type}>
-                Tax <span>40</span>
+                Tax <span>{tax}</span>
               </div>
               <div className={Styles.order_total}>
-                Order Total <span>$420</span>
+                Order Total <span>${orderTotal}</span>
               </div>
             </div>
-            <button className={Styles.place_order}>Place Order</button>
+            <button onClick={handlePlaceOrder} className={Styles.place_order}>
+              Place Order
+            </button>
           </div>
         </div>
       </section>
