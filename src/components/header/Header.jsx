@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { searchByText } from "../../reducers/productReducer";
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Header({ onHandleLogout }) {
+function Header({ cartItems, onHandleLogout }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,6 +33,7 @@ function Header({ onHandleLogout }) {
         </div>
         <div className={Styles.right_side}>
           <NavLink to="/cart">
+            {cartItems.length !== 0 && <span>{cartItems.length}</span>}
             <i className="fa-solid fa-cart-shopping"></i>
           </NavLink>
           <NavLink>

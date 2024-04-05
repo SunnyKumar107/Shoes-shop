@@ -73,7 +73,7 @@ function App() {
 
   return (
     <Router>
-      <Header onHandleLogout={handleLogout} />
+      <Header cartItems={cartItems} onHandleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<CardContainer products={products} />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />

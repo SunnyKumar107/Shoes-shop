@@ -40,6 +40,20 @@
   justify-content: space-between;
 }
 
+.right_side span {
+  padding: 1px 5px;
+  border-radius: 12px;
+  float: right;
+  margin-left: -10px;
+  margin-top: -10px;
+  background-color: #fc0505;
+  color: #fff;
+  font-weight: 600;
+  font-size: small;
+  position: relative;
+  z-index: 2;
+}
+
 .right_side i {
   font-size: 1.5rem;
 }
