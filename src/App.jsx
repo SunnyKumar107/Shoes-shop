@@ -48,10 +48,6 @@ function App() {
     console.log("newUser", newUser);
   };
 
-  const handleAddToCart = (newItem) => {
-    dispatch(updateCart(newItem));
-  };
-
   const handleRemoveToCart = (id) => {
     dispatch(removeItem(id));
   };
@@ -80,15 +76,7 @@ function App() {
       <Header user={user} onHandleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<CardContainer products={products} />} />
-        <Route
-          path="/productDetails/:id"
-          element={
-            <ProductDetails
-              products={products}
-              onHandleAddToCart={handleAddToCart}
-            />
-          }
-        />
+        <Route path="/productDetails/:id" element={<ProductDetails />} />
         <Route
           path="/cart"
           element={

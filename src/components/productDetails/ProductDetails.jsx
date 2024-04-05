@@ -1,17 +1,25 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../card/Card";
 import Styles from "./ProductDetails.module.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { initializeProducts } from "../../reducers/productReducer";
+import { updateCart } from "../../reducers/cartsReducer";
 
-function ProductDetails({ products, onHandleAddToCart }) {
+function ProductDetails({ onHandleAddToCart }) {
+  const products = useSelector((state) => state.products);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeProducts);
+  }, [dispatch]);
+
   const id = useParams().id;
   const product = products.find((p) => p.id == id);
+
   const similarProduct = products.filter(
     (p) => p.category === product.category
-  );
-
-  const productInCart = useSelector((state) => state.cart).find(
-    (p) => p.id === product.id
   );
 
   const navigate = useNavigate();
@@ -20,12 +28,16 @@ function ProductDetails({ products, onHandleAddToCart }) {
     return null;
   }
 
+  const productInCart = cart.find((p) => p.id === product.id);
+
   const handleAddToCart = () => {
-    onHandleAddToCart(product);
+    dispatch(updateCart(product));
   };
 
   const handleBuyNow = () => {
-    handleAddToCart();
+    if (!productInCart) {
+      handleAddToCart();
+    }
 
     navigate("/cart");
   };
@@ -63,7 +75,7 @@ function ProductDetails({ products, onHandleAddToCart }) {
           <div className={Styles.btn_box}>
             {productInCart ? (
               <button className={Styles.added_to_cart}>
-                <i class="fa-solid fa-check-double"></i> Added To Cart
+                <i className="fa-solid fa-check-double"></i> Added To Cart
               </button>
             ) : (
               <button onClick={handleAddToCart} className={Styles.add_to_cart}>
