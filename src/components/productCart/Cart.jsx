@@ -1,9 +1,8 @@
 import React from "react";
 import Styles from "./Cart.module.css";
 import { NavLink } from "react-router-dom";
-import Card from "../card/Card";
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, onHandleRemoveToCart }) => {
   if (cartItems.length === 0) {
     return (
       <div className={Styles.empty_cart}>
@@ -37,14 +36,34 @@ const Cart = ({ cartItems }) => {
         <div className={Styles.cart_container}>
           <div className={Styles.cart_items}>
             {cartItems.map((e) => (
-              <Card
-                id={e.id}
-                img={e.img}
-                title={e.title}
-                prevPrice={e.prevPrice}
-                newPrice={e.newPrice}
-                key={e.id}
-              />
+              // <Card
+              //   id={e.id}
+              //   img={e.img}
+              //   title={e.title}
+              //   prevPrice={e.prevPrice}
+              //   newPrice={e.newPrice}
+              //   key={e.id}
+              // />
+              <div key={e.id} className={Styles.product_in_cart}>
+                <div className={Styles.img_container}>
+                  <img src={e.img} alt={e.img} />
+                </div>
+                <div className={Styles.info_container}>
+                  <h3>{e.title}</h3>
+                  <div className={Styles.price_rating}>
+                    <p>${e.newPrice}</p>{" "}
+                    <span>
+                      <i className="fa-regular fa-star"></i> 4.3
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => onHandleRemoveToCart(e.id)}
+                    className={Styles.remove_to_cart}
+                  >
+                    Remove to Cart
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
           <div className={Styles.price_detail}>

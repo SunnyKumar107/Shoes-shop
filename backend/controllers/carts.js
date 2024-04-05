@@ -23,4 +23,14 @@ cartsRouter.get("/", (request, response, next) => {
   }
 });
 
+cartsRouter.delete("/:id", async (request, response, next) => {
+  try {
+    const id = request.params.id;
+    await cartsData.filter((p) => p.id !== id);
+    response.status(202).end();
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = cartsRouter;

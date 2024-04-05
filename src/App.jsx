@@ -8,7 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { initializeProducts } from "./reducers/productReducer";
 import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
-import { initializeCarts, updateCart } from "./reducers/cartsReducer";
+import {
+  initializeCarts,
+  removeItem,
+  updateCart,
+} from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
 import HomePage from "./components/HomePage/Home";
@@ -44,8 +48,12 @@ function App() {
     console.log("newUser", newUser);
   };
 
-  const handleAddToCart = async (newItem) => {
+  const handleAddToCart = (newItem) => {
     dispatch(updateCart(newItem));
+  };
+
+  const handleRemoveToCart = (id) => {
+    dispatch(removeItem(id));
   };
 
   if (!user) {
@@ -81,7 +89,15 @@ function App() {
             />
           }
         />
-        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cartItems={cartItems}
+              onHandleRemoveToCart={handleRemoveToCart}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

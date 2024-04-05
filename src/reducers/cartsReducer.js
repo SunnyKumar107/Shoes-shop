@@ -11,10 +11,13 @@ const cartsSlice = createSlice({
     appendCart(state, action) {
       return [...state, action.payload];
     },
+    removeToCart(state, action) {
+      return state.filter((e) => e.id !== action.payload);
+    },
   },
 });
 
-export const { setCart, appendCart } = cartsSlice.actions;
+export const { setCart, appendCart, removeToCart } = cartsSlice.actions;
 
 export const initializeCarts = () => {
   return async (dispatch) => {
@@ -27,6 +30,13 @@ export const updateCart = (newItem) => {
   return async (dispatch) => {
     const newCartProduct = await cartsService.addToCart(newItem);
     dispatch(appendCart(newCartProduct));
+  };
+};
+
+export const removeItem = (id) => {
+  return async (dispatch) => {
+    await cartsService.remove(id);
+    dispatch(removeToCart(id));
   };
 };
 
