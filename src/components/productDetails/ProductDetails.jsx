@@ -68,7 +68,7 @@ function ProductDetails({ onHandleAddToCart }) {
           </div>
           <div className={Styles.rating_review}>
             <span>
-              <i className="fa-regular fa-star"></i> 4.3 rating
+              <i className="fa-regular fa-star"></i> {product.star}
             </span>{" "}
             <p>{product.reviews}</p>
           </div>

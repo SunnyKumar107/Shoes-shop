@@ -56,7 +56,7 @@ const Cart = ({ cartItems, onHandleRemoveToCart, onHandlePlaceOrder }) => {
                   <div className={Styles.price_rating}>
                     <p>${e.newPrice}</p>{" "}
                     <span>
-                      <i className="fa-regular fa-star"></i> 4.3
+                      <i className="fa-regular fa-star"></i> {e.star}
                     </span>
                   </div>
                   <button

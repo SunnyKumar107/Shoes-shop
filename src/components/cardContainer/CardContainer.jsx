@@ -4,6 +4,7 @@ import Card from "../card/Card";
 import SideBar from "../sideBar/SideBar";
 
 function CardContainer({ products }) {
+  console.log("products", products);
   return (
     <div>
       <SideBar />
@@ -15,6 +16,7 @@ function CardContainer({ products }) {
             title={e.title}
             prevPrice={e.prevPrice}
             newPrice={e.newPrice}
+            star={e.star}
             key={e.id}
           />
         ))}

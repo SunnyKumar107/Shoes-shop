@@ -14,7 +14,7 @@ function Card(props) {
         </NavLink>
         <div className={Styles.card_reviews}>
           <span>
-            <i className="fa-regular fa-star"></i> 4.3
+            <i className="fa-regular fa-star"></i> {props.star}
           </span>
         </div>
         <div className={Styles.card_price}>
