@@ -2,7 +2,6 @@
   margin-top: 20px;
   margin-right: 20px;
   padding: 20px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -21,11 +20,17 @@
 .card_img {
   width: 11rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .card_title {
   margin-bottom: 1rem;
-  color: #414040;
+  color: #5c5b5a;
+  cursor: pointer;
+}
+
+.card_title:hover {
+  color: #202020;
 }
 
 .card_reviews {
@@ -33,8 +38,14 @@
   display: flex;
 }
 
+.card_reviews span {
+  color: #414040;
+  margin-left: -0.2em;
+}
+
 .card_reviews i {
-  color: #d5ab55;
+  color: #ffd000;
+  font-weight: bold;
 }
 
 .total_reviews {

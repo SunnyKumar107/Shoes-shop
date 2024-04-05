@@ -88,9 +88,9 @@
 }
 
 .rating_review span i {
-  font-size: 1.5em;
-  font-weight: 600;
-  color: #f0f000;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffd000;
 }
 
 .btn_box {
@@ -120,6 +120,11 @@
   background-color: #fff;
   color: #313131;
   border: 1px solid;
+}
+
+.btn_box .added_to_cart {
+  background-color: #fff;
+  color: #313131;
 }
 
 .product_details footer {

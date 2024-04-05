@@ -8,19 +8,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { initializeProducts } from "./reducers/productReducer";
 import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
+import { initializeCarts, updateCart } from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
 import HomePage from "./components/HomePage/Home";
+import Cart from "./components/productCart/Cart";
 
 function App() {
   const products = useSelector((state) => state.products);
   const user = useSelector((state) => state.user);
+  const cartItems = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(initializeProducts());
     dispatch(initializeUser());
+    dispatch(initializeCarts());
   }, [dispatch]);
 
   const handleLogin = async ({ email, password }) => {
@@ -38,6 +42,10 @@ function App() {
       password: password,
     });
     console.log("newUser", newUser);
+  };
+
+  const handleAddToCart = async (newItem) => {
+    dispatch(updateCart(newItem));
   };
 
   if (!user) {
@@ -66,8 +74,14 @@ function App() {
         <Route path="/" element={<CardContainer products={products} />} />
         <Route
           path="/productDetails/:id"
-          element={<ProductDetails products={products} />}
+          element={
+            <ProductDetails
+              products={products}
+              onHandleAddToCart={handleAddToCart}
+            />
+          }
         />
+        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
     </Router>
   );

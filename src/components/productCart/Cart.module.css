@@ -1,0 +1,123 @@
+.cart {
+  margin-left: 13rem;
+  margin-top: 25px;
+}
+
+.cart header {
+  margin-bottom: 2em;
+}
+
+.cart .go_back a {
+  display: flex;
+  cursor: pointer;
+  color: #464545;
+  font-weight: bold;
+}
+
+.cart .go_back a:hover {
+  color: #000;
+}
+
+.cart .go_back a i {
+  margin-right: 0.8em;
+}
+
+.cart section {
+  color: #313131;
+}
+
+.cart section h1 {
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 0.3em;
+}
+
+.cart .cart_container {
+  display: flex;
+  margin-top: 1.5em;
+}
+
+.cart .cart_container .cart_items {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cart_container .price_detail {
+  width: 30em;
+  margin-left: 6em;
+  margin-top: 1em;
+}
+
+.cart_container .price_detail h2 {
+  margin-bottom: 1em;
+}
+
+.price_detail .detail_container .list_type {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  color: #464545;
+}
+
+.price_detail .detail_container .order_total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.2em;
+  font-weight: 600;
+  color: #464545;
+}
+
+.price_detail .place_order {
+  width: 100%;
+  padding: 0.8em 0;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 600;
+  background-color: #f14949;
+  padding: 1em 0;
+  margin-top: 2.5em;
+  font-size: 0.8em;
+}
+
+.price_detail .place_order:hover {
+  background-color: #f53131;
+}
+
+.empty_cart {
+  margin-left: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.empty_cart h1 {
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 0.7em;
+}
+
+.empty_cart p {
+  color: #464545;
+}
+
+.empty_cart a {
+  display: flex;
+  background-color: #313131;
+  color: #fff;
+  padding: 0.5em 1em;
+  margin-top: 3em;
+  border-radius: 18px;
+}
+
+.empty_cart a p {
+  color: #fff;
+  margin-left: 0.5em;
+}
+
+.empty_cart a:hover {
+  background-color: #464545;
+}

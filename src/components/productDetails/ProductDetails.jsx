@@ -1,18 +1,34 @@
+import { useSelector } from "react-redux";
 import Card from "../card/Card";
-import CardContainer from "../cardContainer/CardContainer";
 import Styles from "./ProductDetails.module.css";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 
-function ProductDetails({ products }) {
+function ProductDetails({ products, onHandleAddToCart }) {
   const id = useParams().id;
   const product = products.find((p) => p.id == id);
   const similarProduct = products.filter(
     (p) => p.category === product.category
   );
 
+  const productInCart = useSelector((state) => state.cart).find(
+    (p) => p.id === product.id
+  );
+
+  const navigate = useNavigate();
+
   if (!product) {
     return null;
   }
+
+  const handleAddToCart = () => {
+    onHandleAddToCart(product);
+  };
+
+  const handleBuyNow = () => {
+    handleAddToCart();
+
+    navigate("/cart");
+  };
 
   return (
     <div className={Styles.product_details}>
@@ -45,8 +61,18 @@ function ProductDetails({ products }) {
             <p>{product.reviews}</p>
           </div>
           <div className={Styles.btn_box}>
-            <button className={Styles.add_to_cart}>Add To Cart</button>
-            <button className={Styles.buy_now}>Buy Now</button>
+            {productInCart ? (
+              <button className={Styles.added_to_cart}>
+                <i class="fa-solid fa-check-double"></i> Added To Cart
+              </button>
+            ) : (
+              <button onClick={handleAddToCart} className={Styles.add_to_cart}>
+                Add To Cart
+              </button>
+            )}
+            <button onClick={handleBuyNow} className={Styles.buy_now}>
+              Buy Now
+            </button>
           </div>
         </div>
       </section>

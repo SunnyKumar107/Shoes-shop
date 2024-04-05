@@ -72,7 +72,6 @@ const products = [
     color: "black",
     category: "flats",
   },
-
   {
     id: "fksajfas2541",
     img: "https://m.media-amazon.com/images/I/61V9APfz97L._AC_UY695_.jpg",

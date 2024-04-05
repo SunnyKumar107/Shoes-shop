@@ -26,7 +26,7 @@ function Header({ user, onHandleLogout }) {
         />
       </div>
       <div className={Styles.right_side}>
-        <NavLink>
+        <NavLink to="/cart">
           <i className="fa-solid fa-cart-shopping"></i>
         </NavLink>
         <NavLink>
