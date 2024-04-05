@@ -101,6 +101,7 @@ function ProductDetails({ onHandleAddToCart }) {
               title={e.title}
               prevPrice={e.prevPrice}
               newPrice={e.newPrice}
+              star={e.star}
               key={e.id}
             />
           ))}

@@ -4,7 +4,6 @@ import Card from "../card/Card";
 import SideBar from "../sideBar/SideBar";
 
 function CardContainer({ products }) {
-  console.log("products", products);
   return (
     <div>
       <SideBar />

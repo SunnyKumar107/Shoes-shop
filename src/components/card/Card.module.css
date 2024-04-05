@@ -72,3 +72,17 @@
 .card_price .bag:hover {
   color: #000;
 }
+
+.loader_card {
+  width: 14rem;
+  height: 20.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px #9b9b9b;
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 20px;
+}
