@@ -10,7 +10,6 @@ import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
 import { initializeCarts, removeItem } from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
-import HomePage from "./components/HomePage/Home";
 import Cart from "./components/productCart/Cart";
 
 function App() {
@@ -51,7 +50,6 @@ function App() {
     return (
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
           <Route
             path="/login"
             element={<LoginPage onHandleLogin={handleLogin} />}
@@ -67,7 +65,7 @@ function App() {
 
   return (
     <Router>
-      <Header user={user} onHandleLogout={handleLogout} />
+      <Header onHandleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<CardContainer products={products} />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />

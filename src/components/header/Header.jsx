@@ -4,15 +4,13 @@ import { useDispatch } from "react-redux";
 import { searchByText } from "../../reducers/productReducer";
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Header({ user, onHandleLogout }) {
-  // const username = user.name.split(" ")[0];
-
+function Header({ onHandleLogout }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await onHandleLogout();
     navigate("/login");
-    onHandleLogout();
   };
 
   return (

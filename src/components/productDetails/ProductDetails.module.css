@@ -125,6 +125,7 @@
 .btn_box .added_to_cart {
   background-color: #fff;
   color: #313131;
+  cursor: auto;
 }
 
 .product_details footer {
