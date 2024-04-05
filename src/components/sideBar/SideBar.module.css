@@ -2,22 +2,13 @@
   width: 11rem;
   height: 100%;
   position: fixed;
+  top: 0;
+  background-color: #fff;
   border-right: 2px solid #e5e5e5;
-  z-index: 3;
   display: flex;
   flex-direction: column;
-  padding: 0 2rem;
   color: #3b3b3b;
-}
-
-.sideBar .logo {
-  margin-top: 20px;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
-}
-
-.sideBar .logo:hover {
-  color: #000;
+  padding: 5.5em 2em;
 }
 
 .filter_type h3 {

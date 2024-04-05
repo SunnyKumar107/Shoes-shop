@@ -1,18 +1,13 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
-import SideBar from "./components/sideBar/SideBar";
 import CardContainer from "./components/cardContainer/CardContainer";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import { useSelector, useDispatch } from "react-redux";
 import { initializeProducts } from "./reducers/productReducer";
 import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
-import {
-  initializeCarts,
-  removeItem,
-  updateCart,
-} from "./reducers/cartsReducer";
+import { initializeCarts, removeItem } from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
 import HomePage from "./components/HomePage/Home";
@@ -72,7 +67,6 @@ function App() {
 
   return (
     <Router>
-      <SideBar />
       <Header user={user} onHandleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<CardContainer products={products} />} />

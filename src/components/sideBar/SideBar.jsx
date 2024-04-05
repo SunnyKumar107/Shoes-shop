@@ -1,6 +1,5 @@
 import React from "react";
 import Styles from "./SideBar.module.css";
-import { NavLink } from "react-router-dom";
 import { filterProducts } from "../../reducers/productReducer";
 import { useDispatch } from "react-redux";
 
@@ -13,13 +12,6 @@ function SideBar() {
 
   return (
     <div className={Styles.sideBar}>
-      <NavLink to={"/"}>
-        <div className={Styles.logo}>
-          <h1>
-            <i className="fa-sharp fa-solid fa-cart-shopping"></i>
-          </h1>
-        </div>
-      </NavLink>
       <div className={Styles.filter_type}>
         <h3>Category</h3>
         <div className={Styles.filter_box}>

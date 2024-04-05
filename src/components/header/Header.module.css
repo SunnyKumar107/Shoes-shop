@@ -1,13 +1,24 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #fff;
   border-bottom: 2px solid #f3f3f3;
-  padding: 20px;
-  z-index: 0;
+  padding: 1em 0;
+  z-index: 2;
   position: sticky;
   top: 0;
+}
+
+.header .logo {
+  padding-left: 4em;
+  width: 13vw;
+}
+
+.header .header_container {
+  width: 87vw;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5em;
 }
 
 .header_search input {
@@ -16,7 +27,6 @@
   background: #f7f6f6;
   outline: none;
   margin-right: 20px;
-  margin-left: 12rem;
   border-radius: 5px;
   position: relative;
   width: 14rem;
@@ -25,7 +35,6 @@
 .right_side {
   width: 7rem;
   margin-left: 2rem;
-  margin-right: 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
