@@ -2,12 +2,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Styles from "./LoginPage.module.css";
 import { useEffect, useState } from "react";
 import { Oval } from "react-loader-spinner";
+import { useSelector } from "react-redux";
 
 const LoginPage = ({ onHandleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+  const notification = useSelector((state) => state.notification);
 
   useEffect(() => {
     setLoader(true);
@@ -16,22 +18,26 @@ const LoginPage = ({ onHandleLogin }) => {
     }, 1500);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onHandleLogin({ email, password });
-    setLoader(true);
-    setPassword("");
 
+    setLoader(true);
     setTimeout(() => {
-      navigate("/");
       setLoader(false);
-    }, 2000);
+    }, 1500);
+
+    const user = await onHandleLogin({ email, password });
+    if (user) {
+      navigate("/");
+    }
+    setEmail("");
+    setPassword("");
   };
 
   if (loader) {
     return (
       <div className={Styles.loader_login}>
-        <Oval visible={true} width="50" color="#0056b3" strokeWidth="4" />
+        <Oval visible={true} width="50" color="#007bff" strokeWidth="4" />
       </div>
     );
   }
@@ -40,6 +46,11 @@ const LoginPage = ({ onHandleLogin }) => {
     <div className={Styles.login_container}>
       <form className={Styles.login_form} onSubmit={handleSubmit}>
         <h2>Login</h2>
+        {notification && (
+          <div className={Styles.auth_notification}>
+            <p>{notification.message}</p>
+          </div>
+        )}
         <div className={Styles.input_group}>
           <label htmlFor="email">Email</label>
           <input

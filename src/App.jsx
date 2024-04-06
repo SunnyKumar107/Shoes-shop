@@ -35,8 +35,9 @@ function App() {
       if (client) {
         dispatch(addNotification(`Logged in ${client.name}!`, "success", 5));
       }
+      return client;
     } catch (error) {
-      dispatch(addNotification(`Invalid Email or Password`, "error", 5));
+      dispatch(addNotification(`Invalid credentials`, "error", 5));
     }
   };
 
@@ -53,7 +54,7 @@ function App() {
       });
       return newUser;
     } catch (error) {
-      dispatch(addNotification("Some Error Happend!", "error", 5));
+      dispatch(addNotification("Some error happend", "error", 5));
     }
   };
 

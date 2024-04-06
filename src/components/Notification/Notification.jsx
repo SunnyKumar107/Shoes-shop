@@ -7,12 +7,13 @@ const Notification = () => {
   const notification = useSelector((state) => state.notification);
   const dispatch = useDispatch();
 
-  const msgStyle = {
-    color: notification && notification.type === "success" ? "green" : "red",
-  };
-
   const handleRemove = () => {
     dispatch(removeNotification());
+  };
+
+  const msgStyle = {
+    color:
+      notification && notification.type === "success" ? "#00ff88" : "#ff8800",
   };
 
   return (

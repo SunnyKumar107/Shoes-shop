@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Styles from "./Card.module.css";
 import { NavLink } from "react-router-dom";
-import { RotatingLines } from "react-loader-spinner";
 
 function Card(props) {
   const [loader, setLoader] = useState(true);
@@ -13,16 +12,10 @@ function Card(props) {
   if (loader) {
     return (
       <div className={Styles.loader_card}>
-        <RotatingLines
-          visible={true}
-          width="50"
-          strokeColor="grey"
-          strokeWidth="5"
-          animationDuration="0.75"
-          ariaLabel="rotating-lines-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
+        <div className={Styles.loader_card_img}></div>
+        <div className={Styles.loader_cart_title}></div>
+        <div className={Styles.loader_cart_star}></div>
+        <div className={Styles.loader_cart_price}></div>
       </div>
     );
   }

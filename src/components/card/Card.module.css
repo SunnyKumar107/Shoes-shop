@@ -21,6 +21,7 @@
   width: 11rem;
   margin-bottom: 1rem;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .card_title {
@@ -77,12 +78,35 @@
   width: 14rem;
   height: 20.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0px 10px #9b9b9b;
   margin-top: 20px;
   margin-right: 20px;
   padding: 20px;
+}
+
+.loader_card_img {
+  width: 11em;
+  height: 8em;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.loader_cart_title,
+.loader_cart_price {
+  width: 11em;
+  height: 1.5em;
+  background-color: #e9e9e9;
+  border-radius: 5px;
+}
+
+.loader_cart_star {
+  width: 5em;
+  height: 1.5em;
+  background-color: #e9e9e9;
+  border-radius: 5px;
 }

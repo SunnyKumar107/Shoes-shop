@@ -36,13 +36,14 @@ function ProductDetails() {
 
   const handleAddToCart = () => {
     setCartLoad(true);
-    if (!productInCart) {
-      dispatch(updateCart(product));
-    }
     setTimeout(() => {
       setCartLoad(false);
       dispatch(addNotification("Product added to the cart", "success", 5));
     }, 1000);
+
+    if (!productInCart) {
+      dispatch(updateCart(product));
+    }
   };
 
   const handleBuyNow = () => {
