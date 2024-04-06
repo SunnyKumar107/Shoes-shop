@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Styles from "./Notification.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { removeNotification } from "../../reducers/notificationReducer";
