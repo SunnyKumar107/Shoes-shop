@@ -17,9 +17,7 @@ function Header({ cartItems, onHandleLogout }) {
     <div className={Styles.header}>
       <NavLink to={"/"}>
         <div className={Styles.logo}>
-          <h1>
-            <i className="fa-sharp fa-solid fa-cart-shopping"></i>
-          </h1>
+          <img src="../../../public/shoesshop-logo.png" alt="shoes-shop-logo" />
         </div>
       </NavLink>
       <div className={Styles.header_container}>

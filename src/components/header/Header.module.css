@@ -3,6 +3,7 @@
   align-items: center;
   background-color: #fff;
   border-bottom: 2px solid #f3f3f3;
+  height: 5em;
   padding: 1em 0;
   z-index: 2;
   position: sticky;
@@ -10,8 +11,13 @@
 }
 
 .header .logo {
-  padding-left: 4em;
   width: 13vw;
+  overflow: hidden;
+  text-align: center;
+}
+
+.logo img {
+  width: 4em;
 }
 
 .header .header_container {
