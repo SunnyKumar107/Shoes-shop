@@ -22,7 +22,7 @@ const Notification = () => {
         notification ? Styles.notification_display : Styles.notification_hide
       }
     >
-      <h3>{notification && notification.message}</h3>{" "}
+      <p>{notification && notification.message}</p>{" "}
       <span className={Styles.notification_remove} onClick={handleRemove}>
         <i className="fa-solid fa-xmark"></i>
       </span>

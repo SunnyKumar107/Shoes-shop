@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3003",
+        target: "https://ecommerce-project-b49j.onrender.com",
         changeOrigin: true,
       },
     },
