@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { initializeProducts } from "../../reducers/productReducer";
 import { updateCart } from "../../reducers/cartsReducer";
 import { TailSpin } from "react-loader-spinner";
+import { addNotification } from "../../reducers/notificationReducer";
 
 function ProductDetails() {
   const products = useSelector((state) => state.products);
@@ -40,6 +41,7 @@ function ProductDetails() {
     }
     setTimeout(() => {
       setCartLoad(false);
+      dispatch(addNotification("Product added to the cart", "success", 5));
     }, 1000);
   };
 

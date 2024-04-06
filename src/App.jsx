@@ -11,6 +11,8 @@ import { initializeCarts } from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
 import Cart from "./components/productCart/Cart";
+import Notification from "./components/Notification/Notification";
+import { addNotification } from "./reducers/notificationReducer";
 
 function App() {
   const products = useSelector((state) => state.products);
@@ -25,8 +27,17 @@ function App() {
     dispatch(initializeCarts());
   }, [dispatch]);
 
-  const handleLogin = ({ email, password }) => {
-    dispatch(loginUser({ email: email, password: password }));
+  const handleLogin = async ({ email, password }) => {
+    try {
+      const client = await dispatch(
+        loginUser({ email: email, password: password })
+      );
+      if (client) {
+        dispatch(addNotification(`Logged in ${client.name}!`, "success", 5));
+      }
+    } catch (error) {
+      dispatch(addNotification(`Invalid Email or Password`, "error", 5));
+    }
   };
 
   const handleLogout = () => {
@@ -34,12 +45,16 @@ function App() {
   };
 
   const handleRegister = async ({ email, name, password }) => {
-    const newUser = await usersService.create({
-      email: email,
-      name: name,
-      password: password,
-    });
-    return newUser;
+    try {
+      const newUser = await usersService.create({
+        email: email,
+        name: name,
+        password: password,
+      });
+      return newUser;
+    } catch (error) {
+      dispatch(addNotification("Some Error Happend!", "error", 5));
+    }
   };
 
   if (!user) {
@@ -62,6 +77,7 @@ function App() {
   return (
     <Router>
       <Header cartItems={cartItems} onHandleLogout={handleLogout} />
+      <Notification />
       <Routes>
         <Route path="/" element={<CardContainer products={products} />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />

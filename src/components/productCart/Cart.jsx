@@ -8,10 +8,12 @@ import {
 } from "../../reducers/cartsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { TailSpin } from "react-loader-spinner";
+import { addNotification } from "../../reducers/notificationReducer";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart);
-  const [loader, setLoader] = useState(false);
+  const [removeLoad, setRemoveLoad] = useState(false);
+  const [orderLoad, setOrderLoad] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,16 +35,23 @@ const Cart = () => {
   }
 
   const handleRemoveToCart = (id) => {
-    setLoader(true);
+    setRemoveLoad(true);
 
     setTimeout(() => {
-      setLoader(false);
+      setRemoveLoad(false);
       dispatch(removeItem(id));
+      dispatch(addNotification("Product removed from the cart", "success", 5));
     }, 1000);
   };
 
   const handlePlaceOrder = () => {
-    dispatch(orderPlaced());
+    setOrderLoad(true);
+
+    setTimeout(() => {
+      setOrderLoad(false);
+      dispatch(orderPlaced());
+      dispatch(addNotification("Order successfully placed!", "success", 5));
+    }, 1000);
   };
 
   const priceInNumber = cartItems.map((e) => Number(e.newPrice));
@@ -87,7 +96,7 @@ const Cart = () => {
                     onClick={() => handleRemoveToCart(e.id)}
                     className={Styles.remove_to_cart}
                   >
-                    {loader ? (
+                    {removeLoad ? (
                       <TailSpin
                         height="15"
                         visible={true}
@@ -123,7 +132,17 @@ const Cart = () => {
               </div>
             </div>
             <button onClick={handlePlaceOrder} className={Styles.place_order}>
-              Place Order
+              {orderLoad ? (
+                <TailSpin
+                  height="15"
+                  visible={true}
+                  width="100%"
+                  color="#fff"
+                  strokeWidth="4"
+                />
+              ) : (
+                "Place Order"
+              )}
             </button>
           </div>
         </div>

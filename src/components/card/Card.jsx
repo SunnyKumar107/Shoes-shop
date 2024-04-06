@@ -8,7 +8,7 @@ function Card(props) {
 
   setTimeout(() => {
     setLoader(false);
-  }, 1500);
+  }, 1000);
 
   if (loader) {
     return (
