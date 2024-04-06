@@ -71,3 +71,11 @@ button:hover {
   color: #0056b3;
   border-bottom: 2px solid #0056b3;
 }
+
+.loader_register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}

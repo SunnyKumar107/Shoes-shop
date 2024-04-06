@@ -104,6 +104,7 @@
 .btn_box button {
   width: 12em;
   padding: 0.8em 0;
+  text-align: center;
   border-radius: 20px;
   text-transform: uppercase;
   font-size: 0.8em;

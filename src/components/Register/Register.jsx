@@ -1,23 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./Register.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 
 const Register = ({ onHandleRegister }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLoader(true);
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await onHandleRegister({ email, name, password });
+    setLoader(true);
+    const client = await onHandleRegister({ email, name, password });
 
-    navigate("/login");
-    setEmail("");
-    setName("");
-    setPassword("");
+    setTimeout(() => {
+      setLoader(false);
+      if (client) {
+        navigate("/login");
+      }
+      setEmail("");
+      setName("");
+      setPassword("");
+    }, 1500);
   };
+
+  if (loader) {
+    return (
+      <div className={Styles.loader_register}>
+        <Oval visible={true} width="50" color="#0056b3" strokeWidth="4" />
+      </div>
+    );
+  }
 
   return (
     <div className={Styles.register_container}>

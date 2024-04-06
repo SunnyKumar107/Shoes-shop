@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./Cart.module.css";
 import { NavLink } from "react-router-dom";
+import {
+  initializeCarts,
+  orderPlaced,
+  removeItem,
+} from "../../reducers/cartsReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { TailSpin } from "react-loader-spinner";
 
-const Cart = ({ cartItems, onHandleRemoveToCart, onHandlePlaceOrder }) => {
+const Cart = () => {
+  const cartItems = useSelector((state) => state.cart);
+  const [loader, setLoader] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeCarts);
+  }, [dispatch]);
+
   if (cartItems.length === 0) {
     return (
       <div className={Styles.empty_cart}>
@@ -17,8 +32,17 @@ const Cart = ({ cartItems, onHandleRemoveToCart, onHandlePlaceOrder }) => {
     );
   }
 
+  const handleRemoveToCart = (id) => {
+    setLoader(true);
+
+    setTimeout(() => {
+      setLoader(false);
+      dispatch(removeItem(id));
+    }, 1000);
+  };
+
   const handlePlaceOrder = () => {
-    onHandlePlaceOrder();
+    dispatch(orderPlaced());
   };
 
   const priceInNumber = cartItems.map((e) => Number(e.newPrice));
@@ -60,10 +84,20 @@ const Cart = ({ cartItems, onHandleRemoveToCart, onHandlePlaceOrder }) => {
                     </span>
                   </div>
                   <button
-                    onClick={() => onHandleRemoveToCart(e.id)}
+                    onClick={() => handleRemoveToCart(e.id)}
                     className={Styles.remove_to_cart}
                   >
-                    Remove to Cart
+                    {loader ? (
+                      <TailSpin
+                        height="15"
+                        visible={true}
+                        width="100%"
+                        color="#fff"
+                        strokeWidth="4"
+                      />
+                    ) : (
+                      "Remove to Cart"
+                    )}
                   </button>
                 </div>
               </div>

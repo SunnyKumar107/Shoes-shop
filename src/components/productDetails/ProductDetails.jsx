@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../card/Card";
 import Styles from "./ProductDetails.module.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initializeProducts } from "../../reducers/productReducer";
 import { updateCart } from "../../reducers/cartsReducer";
+import { TailSpin } from "react-loader-spinner";
 
-function ProductDetails({ onHandleAddToCart }) {
+function ProductDetails() {
   const products = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
+  const [cartLoad, setCartLoad] = useState(false);
+  const [buyLoad, setBuyLoad] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,15 +34,25 @@ function ProductDetails({ onHandleAddToCart }) {
   const productInCart = cart.find((p) => p.id === product.id);
 
   const handleAddToCart = () => {
-    dispatch(updateCart(product));
+    setCartLoad(true);
+    if (!productInCart) {
+      dispatch(updateCart(product));
+    }
+    setTimeout(() => {
+      setCartLoad(false);
+    }, 1000);
   };
 
   const handleBuyNow = () => {
-    if (!productInCart) {
-      handleAddToCart();
-    }
+    setBuyLoad(true);
 
-    navigate("/cart");
+    if (!productInCart) {
+      dispatch(updateCart(product));
+    }
+    setTimeout(() => {
+      setBuyLoad(false);
+      navigate("/cart");
+    }, 1000);
   };
 
   return (
@@ -73,17 +86,37 @@ function ProductDetails({ onHandleAddToCart }) {
             <p>{product.reviews}</p>
           </div>
           <div className={Styles.btn_box}>
-            {productInCart ? (
+            {!cartLoad && productInCart ? (
               <button className={Styles.added_to_cart}>
                 <i className="fa-solid fa-check-double"></i> Added To Cart
               </button>
             ) : (
               <button onClick={handleAddToCart} className={Styles.add_to_cart}>
-                Add To Cart
+                {cartLoad ? (
+                  <TailSpin
+                    height="15"
+                    visible={true}
+                    width="100%"
+                    color="#313131"
+                    strokeWidth="4"
+                  />
+                ) : (
+                  "Add To Cart"
+                )}
               </button>
             )}
             <button onClick={handleBuyNow} className={Styles.buy_now}>
-              Buy Now
+              {buyLoad ? (
+                <TailSpin
+                  height="15"
+                  visible={true}
+                  width="100%"
+                  color="#fff"
+                  strokeWidth="4"
+                />
+              ) : (
+                "Buy Now"
+              )}
             </button>
           </div>
         </div>

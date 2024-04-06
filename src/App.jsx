@@ -7,11 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { initializeProducts } from "./reducers/productReducer";
 import LoginPage from "./components/loginPage/LoginPage";
 import { initializeUser, loginUser, logoutUser } from "./reducers/loginReducer";
-import {
-  initializeCarts,
-  orderPlaced,
-  removeItem,
-} from "./reducers/cartsReducer";
+import { initializeCarts } from "./reducers/cartsReducer";
 import Register from "./components/Register/Register";
 import usersService from "./services/users";
 import Cart from "./components/productCart/Cart";
@@ -29,7 +25,7 @@ function App() {
     dispatch(initializeCarts());
   }, [dispatch]);
 
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = ({ email, password }) => {
     dispatch(loginUser({ email: email, password: password }));
   };
 
@@ -43,15 +39,7 @@ function App() {
       name: name,
       password: password,
     });
-    console.log("newUser", newUser);
-  };
-
-  const handleRemoveToCart = (id) => {
-    dispatch(removeItem(id));
-  };
-
-  const handlePlaceOrder = () => {
-    dispatch(orderPlaced());
+    return newUser;
   };
 
   if (!user) {
@@ -77,16 +65,7 @@ function App() {
       <Routes>
         <Route path="/" element={<CardContainer products={products} />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
-        <Route
-          path="/cart"
-          element={
-            <Cart
-              cartItems={cartItems}
-              onHandleRemoveToCart={handleRemoveToCart}
-              onHandlePlaceOrder={handlePlaceOrder}
-            />
-          }
-        />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
   );

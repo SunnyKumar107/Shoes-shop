@@ -1,24 +1,31 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import Styles from "./LoginPage.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Oval } from "react-loader-spinner";
 
 const LoginPage = ({ onHandleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLoader(true);
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onHandleLogin({ email, password });
     setLoader(true);
     setPassword("");
+
     setTimeout(() => {
       navigate("/");
-      onHandleLogin({ email, password });
       setLoader(false);
-    }, 1500);
+    }, 2000);
   };
 
   if (loader) {
