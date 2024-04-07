@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import Styles from './Header.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchByText } from '../../reducers/productReducer'
@@ -19,7 +18,7 @@ function Header({ cartItems, onHandleLogout }) {
     <div className={Styles.header}>
       <NavLink to={'/'}>
         <div className={Styles.logo}>
-          <img src="../../../public/shoesshop-logo.png" alt="shoes-shop-logo" />
+          <img src="../../../shoesshop-logo.png" alt="shoes-shop-logo" />
         </div>
       </NavLink>
       {user ? (
