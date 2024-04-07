@@ -20,7 +20,7 @@ function ProductDetails() {
   }, [dispatch])
 
   const id = useParams().id
-  const product = products.find((p) => p.id == id)
+  const product = products.find((p) => p.id === id)
 
   const similarProduct = products.filter((p) => p.category === product.category)
 
