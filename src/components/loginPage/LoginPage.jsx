@@ -1,45 +1,46 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import Styles from "./LoginPage.module.css";
-import { useEffect, useState } from "react";
-import { Oval } from "react-loader-spinner";
-import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from 'react-router-dom'
+import Styles from './LoginPage.module.css'
+import { useEffect, useState } from 'react'
+import { Oval } from 'react-loader-spinner'
+import { useSelector } from 'react-redux'
+import propTypes from 'prop-types'
 
 const LoginPage = ({ onHandleLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loader, setLoader] = useState(false);
-  const navigate = useNavigate();
-  const notification = useSelector((state) => state.notification);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loader, setLoader] = useState(false)
+  const navigate = useNavigate()
+  const notification = useSelector((state) => state.notification)
 
   useEffect(() => {
-    setLoader(true);
+    setLoader(true)
     setTimeout(() => {
-      setLoader(false);
-    }, 1500);
-  }, []);
+      setLoader(false)
+    }, 1500)
+  }, [])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    setLoader(true);
+    setLoader(true)
     setTimeout(() => {
-      setLoader(false);
-    }, 1500);
+      setLoader(false)
+    }, 1500)
 
-    const user = await onHandleLogin({ email, password });
+    const user = await onHandleLogin({ email, password })
     if (user) {
-      navigate("/");
+      navigate('/')
     }
-    setEmail("");
-    setPassword("");
-  };
+    setEmail('')
+    setPassword('')
+  }
 
   if (loader) {
     return (
       <div className={Styles.loader_login}>
         <Oval visible={true} width="50" color="#007bff" strokeWidth="4" />
       </div>
-    );
+    )
   }
 
   return (
@@ -73,14 +74,18 @@ const LoginPage = ({ onHandleLogin }) => {
         </div>
         <button type="submit">Login</button>
         <div className={Styles.have_or_not}>
-          <p>Don't have an account?</p>{" "}
+          <p>Don&apos;t have an account?</p>{' '}
           <NavLink to="/register">
             <span>Register</span>
           </NavLink>
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
+LoginPage.propTypes = {
+  onHandleLogin: propTypes.func.isRequired
+}
+
+export default LoginPage

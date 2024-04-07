@@ -1,21 +1,22 @@
-import React from "react";
-import Styles from "./Header.module.css";
-import { useDispatch } from "react-redux";
-import { searchByText } from "../../reducers/productReducer";
-import { NavLink, useNavigate } from "react-router-dom";
+import React from 'react'
+import Styles from './Header.module.css'
+import { useDispatch } from 'react-redux'
+import { searchByText } from '../../reducers/productReducer'
+import { NavLink, useNavigate } from 'react-router-dom'
+import propTypes from 'prop-types'
 
 function Header({ cartItems, onHandleLogout }) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
-    await onHandleLogout();
-    navigate("/login");
-  };
+    await onHandleLogout()
+    navigate('/login')
+  }
 
   return (
     <div className={Styles.header}>
-      <NavLink to={"/"}>
+      <NavLink to={'/'}>
         <div className={Styles.logo}>
           <img src="../../../public/shoesshop-logo.png" alt="shoes-shop-logo" />
         </div>
@@ -43,7 +44,12 @@ function Header({ cartItems, onHandleLogout }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Header;
+Header.propTypes = {
+  cartItems: propTypes.array.isRequired,
+  onHandleLogout: propTypes.func.isRequired
+}
+
+export default Header

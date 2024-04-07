@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import Styles from "./Cart.module.css";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import Styles from './Cart.module.css'
+import { NavLink } from 'react-router-dom'
 import {
   initializeCarts,
   orderPlaced,
-  removeItem,
-} from "../../reducers/cartsReducer";
-import { useDispatch, useSelector } from "react-redux";
-import { TailSpin } from "react-loader-spinner";
-import { addNotification } from "../../reducers/notificationReducer";
+  removeItem
+} from '../../reducers/cartsReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { TailSpin } from 'react-loader-spinner'
+import { addNotification } from '../../reducers/notificationReducer'
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart);
-  const [removeLoad, setRemoveLoad] = useState(false);
-  const [orderLoad, setOrderLoad] = useState(false);
-  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart)
+  const [removeLoad, setRemoveLoad] = useState(false)
+  const [orderLoad, setOrderLoad] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(initializeCarts);
-  }, [dispatch]);
+    dispatch(initializeCarts)
+  }, [dispatch])
 
   if (cartItems.length === 0) {
     return (
@@ -31,35 +31,35 @@ const Cart = () => {
           <i className="fa-sharp fa-solid fa-arrow-left"></i> <p>Home</p>
         </NavLink>
       </div>
-    );
+    )
   }
 
   const handleRemoveToCart = (id) => {
-    setRemoveLoad(true);
+    setRemoveLoad(true)
 
     setTimeout(() => {
-      setRemoveLoad(false);
-      dispatch(removeItem(id));
-      dispatch(addNotification("Product removed from the cart", "success", 5));
-    }, 1000);
-  };
+      setRemoveLoad(false)
+      dispatch(removeItem(id))
+      dispatch(addNotification('Product removed from the cart', 'success', 5))
+    }, 1000)
+  }
 
   const handlePlaceOrder = () => {
-    setOrderLoad(true);
+    setOrderLoad(true)
 
     setTimeout(() => {
-      setOrderLoad(false);
-      dispatch(orderPlaced());
-      dispatch(addNotification("Order successfully placed!", "success", 5));
-    }, 1000);
-  };
+      setOrderLoad(false)
+      dispatch(orderPlaced())
+      dispatch(addNotification('Order successfully placed!', 'success', 5))
+    }, 1000)
+  }
 
-  const priceInNumber = cartItems.map((e) => Number(e.newPrice));
-  const cartTotal = priceInNumber.reduce((a, b) => a + b, 0);
-  const discount = (cartTotal * 10) / 100;
-  const tax = (cartTotal * 15) / 100;
+  const priceInNumber = cartItems.map((e) => Number(e.newPrice))
+  const cartTotal = priceInNumber.reduce((a, b) => a + b, 0)
+  const discount = (cartTotal * 10) / 100
+  const tax = (cartTotal * 15) / 100
 
-  const orderTotal = cartTotal - discount + tax;
+  const orderTotal = cartTotal - discount + tax
 
   return (
     <div className={Styles.cart}>
@@ -87,7 +87,7 @@ const Cart = () => {
                 <div className={Styles.info_container}>
                   <h3>{e.title}</h3>
                   <div className={Styles.price_rating}>
-                    <p>${e.newPrice}</p>{" "}
+                    <p>${e.newPrice}</p>{' '}
                     <span>
                       <i className="fa-regular fa-star"></i> {e.star}
                     </span>
@@ -105,7 +105,7 @@ const Cart = () => {
                         strokeWidth="4"
                       />
                     ) : (
-                      "Remove to Cart"
+                      'Remove to Cart'
                     )}
                   </button>
                 </div>
@@ -141,14 +141,14 @@ const Cart = () => {
                   strokeWidth="4"
                 />
               ) : (
-                "Place Order"
+                'Place Order'
               )}
             </button>
           </div>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

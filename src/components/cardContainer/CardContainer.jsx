@@ -1,7 +1,8 @@
-import React from "react";
-import Styles from "./CardContainer.module.css";
-import Card from "../card/Card";
-import SideBar from "../sideBar/SideBar";
+import React from 'react'
+import Styles from './CardContainer.module.css'
+import Card from '../card/Card'
+import SideBar from '../sideBar/SideBar'
+import propTypes from 'prop-types'
 
 function CardContainer({ products }) {
   return (
@@ -21,7 +22,11 @@ function CardContainer({ products }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default CardContainer;
+CardContainer.propTypes = {
+  products: propTypes.array.isRequired
+}
+
+export default CardContainer

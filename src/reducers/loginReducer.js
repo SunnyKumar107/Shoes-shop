@@ -1,49 +1,49 @@
-import { createSlice } from "@reduxjs/toolkit";
-import loginService from "../services/authentication";
+import { createSlice } from '@reduxjs/toolkit'
+import loginService from '../services/authentication'
 
 const loginSlice = createSlice({
-  name: "authentication",
+  name: 'authentication',
   initialState: null,
   reducers: {
     userInit(state, action) {
-      return action.payload;
+      return action.payload
     },
     login(state, action) {
-      return action.payload;
+      return action.payload
     },
-    logout(state, action) {
-      return null;
-    },
-  },
-});
+    logout() {
+      return null
+    }
+  }
+})
 
-export const { userInit, login, logout } = loginSlice.actions;
+export const { userInit, login, logout } = loginSlice.actions
 
 export const initializeUser = () => {
   return async (dispatch) => {
-    const loggedUserJson = window.localStorage.getItem("loggedInShopAppUser");
+    const loggedUserJson = window.localStorage.getItem('loggedInShopAppUser')
     if (loggedUserJson) {
-      const user = JSON.parse(loggedUserJson);
-      dispatch(userInit(user));
+      const user = JSON.parse(loggedUserJson)
+      dispatch(userInit(user))
     }
-  };
-};
+  }
+}
 
 export const loginUser = (authData) => {
   return async (dispatch) => {
-    const user = await loginService.authentication(authData);
-    dispatch(login(user));
-    window.localStorage.setItem("loggedInShopAppUser", JSON.stringify(user));
+    const user = await loginService.authentication(authData)
+    dispatch(login(user))
+    window.localStorage.setItem('loggedInShopAppUser', JSON.stringify(user))
 
-    return user;
-  };
-};
+    return user
+  }
+}
 
 export const logoutUser = () => {
   return async (dispatch) => {
-    window.localStorage.removeItem("loggedInShopAppUser");
-    dispatch(logout());
-  };
-};
+    window.localStorage.removeItem('loggedInShopAppUser')
+    dispatch(logout())
+  }
+}
 
-export default loginSlice.reducer;
+export default loginSlice.reducer

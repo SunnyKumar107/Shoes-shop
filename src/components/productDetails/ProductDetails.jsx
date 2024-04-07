@@ -1,62 +1,60 @@
-import { useDispatch, useSelector } from "react-redux";
-import Card from "../card/Card";
-import Styles from "./ProductDetails.module.css";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { initializeProducts } from "../../reducers/productReducer";
-import { updateCart } from "../../reducers/cartsReducer";
-import { TailSpin } from "react-loader-spinner";
-import { addNotification } from "../../reducers/notificationReducer";
+import { useDispatch, useSelector } from 'react-redux'
+import Card from '../card/Card'
+import Styles from './ProductDetails.module.css'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { initializeProducts } from '../../reducers/productReducer'
+import { updateCart } from '../../reducers/cartsReducer'
+import { TailSpin } from 'react-loader-spinner'
+import { addNotification } from '../../reducers/notificationReducer'
 
 function ProductDetails() {
-  const products = useSelector((state) => state.products);
-  const cart = useSelector((state) => state.cart);
-  const [cartLoad, setCartLoad] = useState(false);
-  const [buyLoad, setBuyLoad] = useState(false);
-  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products)
+  const cart = useSelector((state) => state.cart)
+  const [cartLoad, setCartLoad] = useState(false)
+  const [buyLoad, setBuyLoad] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(initializeProducts);
-  }, [dispatch]);
+    dispatch(initializeProducts)
+  }, [dispatch])
 
-  const id = useParams().id;
-  const product = products.find((p) => p.id == id);
+  const id = useParams().id
+  const product = products.find((p) => p.id == id)
 
-  const similarProduct = products.filter(
-    (p) => p.category === product.category
-  );
+  const similarProduct = products.filter((p) => p.category === product.category)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   if (!product) {
-    return null;
+    return null
   }
 
-  const productInCart = cart.find((p) => p.id === product.id);
+  const productInCart = cart.find((p) => p.id === product.id)
 
   const handleAddToCart = () => {
-    setCartLoad(true);
+    setCartLoad(true)
     setTimeout(() => {
-      setCartLoad(false);
-      dispatch(addNotification("Product added to the cart", "success", 5));
-    }, 1000);
+      setCartLoad(false)
+      dispatch(addNotification('Product added to the cart', 'success', 5))
+    }, 1000)
 
     if (!productInCart) {
-      dispatch(updateCart(product));
+      dispatch(updateCart(product))
     }
-  };
+  }
 
   const handleBuyNow = () => {
-    setBuyLoad(true);
+    setBuyLoad(true)
 
     if (!productInCart) {
-      dispatch(updateCart(product));
+      dispatch(updateCart(product))
     }
     setTimeout(() => {
-      setBuyLoad(false);
-      navigate("/cart");
-    }, 1000);
-  };
+      setBuyLoad(false)
+      navigate('/cart')
+    }, 1000)
+  }
 
   return (
     <div className={Styles.product_details}>
@@ -85,7 +83,7 @@ function ProductDetails() {
           <div className={Styles.rating_review}>
             <span>
               <i className="fa-regular fa-star"></i> {product.star}
-            </span>{" "}
+            </span>{' '}
             <p>{product.reviews}</p>
           </div>
           <div className={Styles.btn_box}>
@@ -104,7 +102,7 @@ function ProductDetails() {
                     strokeWidth="4"
                   />
                 ) : (
-                  "Add To Cart"
+                  'Add To Cart'
                 )}
               </button>
             )}
@@ -118,7 +116,7 @@ function ProductDetails() {
                   strokeWidth="4"
                 />
               ) : (
-                "Buy Now"
+                'Buy Now'
               )}
             </button>
           </div>
@@ -144,7 +142,7 @@ function ProductDetails() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
 
-export default ProductDetails;
+export default ProductDetails

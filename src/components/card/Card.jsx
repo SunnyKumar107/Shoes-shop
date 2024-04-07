@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import Styles from "./Card.module.css";
-import { NavLink } from "react-router-dom";
+import React, { useState } from 'react'
+import Styles from './Card.module.css'
+import { NavLink } from 'react-router-dom'
+import propTypes from 'prop-types'
 
-function Card(props) {
-  const [loader, setLoader] = useState(true);
+function Card({ id, img, title, newPrice, prevPrice, star }) {
+  const [loader, setLoader] = useState(true)
 
   setTimeout(() => {
-    setLoader(false);
-  }, 1000);
+    setLoader(false)
+  }, 1000)
 
   if (loader) {
     return (
@@ -17,26 +18,26 @@ function Card(props) {
         <div className={Styles.loader_cart_star}></div>
         <div className={Styles.loader_cart_price}></div>
       </div>
-    );
+    )
   }
 
   return (
     <div className={Styles.card}>
-      <NavLink to={`/productDetails/${props.id}`}>
-        <img src={props.img} alt="shoe" className={Styles.card_img} />
+      <NavLink to={`/productDetails/${id}`}>
+        <img src={img} alt="shoe" className={Styles.card_img} />
       </NavLink>
       <div className={Styles.card_details}>
-        <NavLink to={`/productDetails/${props.id}`}>
-          <h3 className={Styles.card_title}>{props.title}</h3>
+        <NavLink to={`/productDetails/${id}`}>
+          <h3 className={Styles.card_title}>{title}</h3>
         </NavLink>
         <div className={Styles.card_reviews}>
           <span>
-            <i className="fa-regular fa-star"></i> {props.star}
+            <i className="fa-regular fa-star"></i> {star}
           </span>
         </div>
         <div className={Styles.card_price}>
           <div className={Styles.price}>
-            <del>{props.prevPrice}</del> ${props.newPrice}
+            <del>{prevPrice}</del> ${newPrice}
           </div>
           <div className={Styles.bag}>
             <i className="fa-solid fa-bag-shopping"></i>
@@ -44,7 +45,16 @@ function Card(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Card;
+Card.propTypes = {
+  id: propTypes.string.isRequired,
+  title: propTypes.string.isRequired,
+  img: propTypes.string.isRequired,
+  prevPrice: propTypes.string.isRequired,
+  newPrice: propTypes.string.isRequired,
+  star: propTypes.string.isRequired
+}
+
+export default Card

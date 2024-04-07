@@ -1,14 +1,14 @@
-import React from "react";
-import Styles from "./SideBar.module.css";
-import { filterProducts } from "../../reducers/productReducer";
-import { useDispatch } from "react-redux";
+import React from 'react'
+import Styles from './SideBar.module.css'
+import { filterProducts } from '../../reducers/productReducer'
+import { useDispatch } from 'react-redux'
 
 function SideBar() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleFilterType = (type) => {
-    dispatch(filterProducts(type));
-  };
+    dispatch(filterProducts(type))
+  }
 
   return (
     <div className={Styles.sideBar}>
@@ -19,7 +19,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("all")}
+              onClick={() => handleFilterType('all')}
             />
             <span className={Styles.checkmark}></span>All
           </label>
@@ -27,7 +27,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("sneakers")}
+              onClick={() => handleFilterType('sneakers')}
             />
             <span className={Styles.checkmark}></span>Sneakers
           </label>
@@ -35,7 +35,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("flats")}
+              onClick={() => handleFilterType('flats')}
             />
             <span className={Styles.checkmark}></span>Flats
           </label>
@@ -43,7 +43,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("sandals")}
+              onClick={() => handleFilterType('sandals')}
             />
             <span className={Styles.checkmark}></span>Sandals
           </label>
@@ -51,7 +51,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("heels")}
+              onClick={() => handleFilterType('heels')}
             />
             <span className={Styles.checkmark}></span>Heels
           </label>
@@ -64,7 +64,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("all")}
+              onClick={() => handleFilterType('all')}
             />
             <span className={Styles.checkmark}></span>All
           </label>
@@ -109,7 +109,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("all")}
+              onClick={() => handleFilterType('all')}
             />
             <span className={Styles.checkmark}></span>All
           </label>
@@ -117,7 +117,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("black")}
+              onClick={() => handleFilterType('black')}
             />
             <span className={Styles.checkmark}></span>Black
           </label>
@@ -125,7 +125,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("blue")}
+              onClick={() => handleFilterType('blue')}
             />
             <span className={Styles.checkmark}></span>Blue
           </label>
@@ -133,7 +133,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("red")}
+              onClick={() => handleFilterType('red')}
             />
             <span className={Styles.checkmark}></span>Red
           </label>
@@ -141,7 +141,7 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("white")}
+              onClick={() => handleFilterType('white')}
             />
             <span className={Styles.checkmark}></span>White
           </label>
@@ -149,14 +149,14 @@ function SideBar() {
             <input
               type="radio"
               name="check_box"
-              onClick={() => handleFilterType("green")}
+              onClick={() => handleFilterType('green')}
             />
             <span className={Styles.checkmark}></span>Green
           </label>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SideBar;
+export default SideBar

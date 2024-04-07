@@ -1,49 +1,49 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const cartsSlice = createSlice({
-  name: "carts",
+  name: 'carts',
   initialState: [],
   reducers: {
     setCart(state, action) {
-      return action.payload;
+      return action.payload
     },
     appendCart(state, action) {
-      return [...state, action.payload];
+      return [...state, action.payload]
     },
     removeToCart(state, action) {
-      return state.filter((e) => e.id !== action.payload);
+      return state.filter((e) => e.id !== action.payload)
     },
-    removeAllCart(state, action) {
-      return [];
-    },
-  },
-});
+    removeAllCart() {
+      return []
+    }
+  }
+})
 
 export const { setCart, appendCart, removeToCart, removeAllCart } =
-  cartsSlice.actions;
+  cartsSlice.actions
 
 export const initializeCarts = () => {
   return async (dispatch) => {
-    dispatch(setCart());
-  };
-};
+    dispatch(setCart())
+  }
+}
 
 export const updateCart = (newItem) => {
   return async (dispatch) => {
-    dispatch(appendCart(newItem));
-  };
-};
+    dispatch(appendCart(newItem))
+  }
+}
 
 export const removeItem = (id) => {
   return async (dispatch) => {
-    dispatch(removeToCart(id));
-  };
-};
+    dispatch(removeToCart(id))
+  }
+}
 
 export const orderPlaced = () => {
   return async (dispatch) => {
-    dispatch(removeAllCart());
-  };
-};
+    dispatch(removeAllCart())
+  }
+}
 
-export default cartsSlice.reducer;
+export default cartsSlice.reducer
