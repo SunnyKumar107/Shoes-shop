@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/header/Header'
-import CardContainer from './components/cardContainer/CardContainer'
+import Home from './components/home/Home'
 import ProductDetails from './components/productDetails/ProductDetails'
 import { useSelector, useDispatch } from 'react-redux'
 import { initializeProducts } from './reducers/productReducer'
@@ -16,7 +16,6 @@ import { addNotification } from './reducers/notificationReducer'
 
 function App() {
   const products = useSelector((state) => state.products)
-  const user = useSelector((state) => state.user)
   const cartItems = useSelector((state) => state.cart)
 
   const dispatch = useDispatch()
@@ -58,31 +57,22 @@ function App() {
     }
   }
 
-  if (!user) {
-    return (
-      <Router>
-        <Routes>
-          <Route
-            path="/login"
-            element={<LoginPage onHandleLogin={handleLogin} />}
-          />
-          <Route
-            path="/register"
-            element={<Register onHandleRegister={handleRegister} />}
-          />
-        </Routes>
-      </Router>
-    )
-  }
-
   return (
     <Router>
       <Header cartItems={cartItems} onHandleLogout={handleLogout} />
       <Notification />
       <Routes>
-        <Route path="/" element={<CardContainer products={products} />} />
+        <Route path="/" element={<Home products={products} />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/login"
+          element={<LoginPage onHandleLogin={handleLogin} />}
+        />
+        <Route
+          path="/register"
+          element={<Register onHandleRegister={handleRegister} />}
+        />
       </Routes>
     </Router>
   )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Styles from './Cart.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   initializeCarts,
   orderPlaced,
@@ -11,10 +11,17 @@ import { TailSpin } from 'react-loader-spinner'
 import { addNotification } from '../../reducers/notificationReducer'
 
 const Cart = () => {
+  const user = useSelector((state) => state.user)
   const cartItems = useSelector((state) => state.cart)
   const [removeLoad, setRemoveLoad] = useState(false)
   const [orderLoad, setOrderLoad] = useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  if (!user) {
+    navigate('/login')
+    return null
+  }
 
   useEffect(() => {
     dispatch(initializeCarts)

@@ -1,10 +1,19 @@
-import React from 'react'
-import Styles from './CardContainer.module.css'
+import Styles from './Home.module.css'
 import Card from '../card/Card'
 import SideBar from '../sideBar/SideBar'
 import propTypes from 'prop-types'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-function CardContainer({ products }) {
+function Home({ products }) {
+  const user = useSelector((state) => state.user)
+  const navigate = useNavigate()
+
+  if (!user) {
+    navigate('/login')
+    return null
+  }
+
   return (
     <div>
       <SideBar />
@@ -25,8 +34,8 @@ function CardContainer({ products }) {
   )
 }
 
-CardContainer.propTypes = {
+Home.propTypes = {
   products: propTypes.array.isRequired
 }
 
-export default CardContainer
+export default Home

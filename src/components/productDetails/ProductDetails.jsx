@@ -9,22 +9,23 @@ import { TailSpin } from 'react-loader-spinner'
 import { addNotification } from '../../reducers/notificationReducer'
 
 function ProductDetails() {
+  const user = useSelector((state) => state.user)
   const products = useSelector((state) => state.products)
   const cart = useSelector((state) => state.cart)
   const [cartLoad, setCartLoad] = useState(false)
   const [buyLoad, setBuyLoad] = useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    dispatch(initializeProducts)
-  }, [dispatch])
+  if (!user) {
+    navigate('/login')
+    return null
+  }
 
   const id = useParams().id
   const product = products.find((p) => p.id === id)
 
   const similarProduct = products.filter((p) => p.category === product.category)
-
-  const navigate = useNavigate()
 
   if (!product) {
     return null

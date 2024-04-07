@@ -12,6 +12,12 @@ const Register = ({ onHandleRegister }) => {
   const [loader, setLoader] = useState(false)
   const navigate = useNavigate()
   const notification = useSelector((state) => state.notification)
+  const user = useSelector((state) => state.user)
+
+  if (user) {
+    navigate('/')
+    return null
+  }
 
   useEffect(() => {
     setLoader(true)
