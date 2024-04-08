@@ -33,7 +33,7 @@
 
 .cart .cart_container {
   display: flex;
-  margin-top: 4em;
+  margin-top: 3em;
 }
 
 .cart .cart_container .cart_items {
@@ -62,8 +62,7 @@
 }
 
 .product_in_cart .img_container img {
-  width: 12em;
-  max-height: 9em;
+  width: 10em;
 }
 
 .product_in_cart .info_container .price_rating {
@@ -103,6 +102,7 @@
 .cart_container .price_detail {
   width: 30em;
   margin-left: 6em;
+  margin-top: 1.5em;
 }
 
 .cart_container .price_detail h2 {
@@ -112,7 +112,7 @@
 .price_detail .detail_container .list_type {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.9em;
   font-weight: 600;
   color: #464545;
 }
@@ -187,19 +187,24 @@
   .cart {
     padding: 1.5em;
   }
+
   .cart .cart_container {
     flex-direction: column;
-    align-items: center;
   }
 
   .cart .cart_container .cart_items {
-    width: 20em;
+    width: 100%;
+    justify-content: center;
   }
 
   .product_in_cart {
     width: 20em;
-    height: 20em;
+    height: 23em;
     margin-bottom: 1.5em;
+  }
+
+  .product_in_cart .img_container img {
+    width: 12em;
   }
 
   .cart_container .price_detail {
