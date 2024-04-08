@@ -1,16 +1,19 @@
 .card {
-  margin-top: 20px;
+  margin-bottom: 20px;
   margin-right: 20px;
-  padding: 20px;
+  padding: 20px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 14rem;
+  width: 16rem;
   height: 20.5rem;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0px 10px #9b9b9b;
+  box-shadow: 0 0 20px #c2c1c1;
   transition: 0.4s;
+}
+
+.card_details {
 }
 
 .card:hover {
@@ -40,8 +43,8 @@
 }
 
 .card_reviews span {
-  font-weight: 600;
-  color: #575757;
+  font-weight: bold;
+  color: #6b6b6b;
   margin-left: -0.2em;
 }
 
@@ -63,11 +66,13 @@
 }
 
 .card_price .price {
-  font-weight: 600;
+  font-weight: bold;
+  color: #3f3f3f;
+  font-size: 1.1rem;
 }
 
 .card_price .price del {
-  color: #5c5b5a;
+  font-size: 0.9em;
 }
 
 .card_price .bag:hover {
@@ -75,7 +80,7 @@
 }
 
 .loader_card {
-  width: 14rem;
+  width: 16rem;
   height: 20.5rem;
   display: flex;
   flex-direction: column;
@@ -83,9 +88,9 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0px 10px #9b9b9b;
-  margin-top: 20px;
+  margin-bottom: 20px;
   margin-right: 20px;
-  padding: 20px;
+  padding: 20px 30px;
 }
 
 .loader_card_img {
@@ -109,4 +114,61 @@
   height: 1.5em;
   background-color: #e9e9e9;
   border-radius: 5px;
+}
+
+@media (max-width: 500px) {
+  .card {
+    margin-bottom: 30px;
+    margin-right: 0;
+    width: 90vw;
+    height: 28em;
+  }
+
+  .card_img {
+    width: 17rem;
+  }
+
+  .card_details {
+    width: 17rem;
+  }
+
+  .card_title {
+    font-size: 1.4rem;
+  }
+
+  .card_price .price {
+    font-size: 1.4rem;
+  }
+
+  .card_price .price del {
+    font-size: 0.8em;
+  }
+
+  .card_price .bag {
+    font-size: 1.2rem;
+  }
+
+  .loader_card {
+    width: 90vw;
+    height: 28rem;
+    margin-bottom: 30px;
+    margin-right: 0;
+  }
+
+  .loader_card_img {
+    width: 17em;
+    height: 12em;
+    margin-bottom: 2.5em;
+  }
+
+  .loader_cart_title,
+  .loader_cart_price {
+    width: 17em;
+    height: 1.8em;
+  }
+
+  .loader_cart_star {
+    width: 5em;
+    height: 1.5em;
+  }
 }

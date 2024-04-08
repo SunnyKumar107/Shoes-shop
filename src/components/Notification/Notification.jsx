@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 const Notification = () => {
   const notification = useSelector((state) => state.notification)
+  const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [msg, setMsg] = useState(null)
   const [type, setType] = useState(null)
@@ -17,11 +18,15 @@ const Notification = () => {
   }, [notification])
 
   const msgStyle = {
-    color: type === 'success' ? '#00ff88' : '#ff7300'
+    color: type === 'success' ? '#00d10a' : '#ff7300'
   }
 
   const handleRemove = () => {
     dispatch(removeNotification())
+  }
+
+  if (!user) {
+    return null
   }
 
   return (

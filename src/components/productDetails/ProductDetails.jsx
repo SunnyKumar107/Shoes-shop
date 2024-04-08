@@ -33,13 +33,13 @@ function ProductDetails() {
   const productInCart = cart.find((p) => p.id === product.id)
 
   const handleAddToCart = () => {
-    setCartLoad(true)
-    setTimeout(() => {
-      setCartLoad(false)
-      dispatch(addNotification('Product added to the cart', 'success', 5))
-    }, 1000)
-
     if (!productInCart) {
+      setCartLoad(true)
+      setTimeout(() => {
+        setCartLoad(false)
+        dispatch(addNotification('Product added to the cart', 'success', 5))
+      }, 1000)
+
       dispatch(updateCart(product))
     }
   }
@@ -123,7 +123,7 @@ function ProductDetails() {
         </div>
       </section>
       <footer>
-        <div>
+        <div className={Styles.similar_info}>
           <h1>Explore Similar Products</h1>
           <p>Find the perfect match for your preferences and needs.</p>
         </div>

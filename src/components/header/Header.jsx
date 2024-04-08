@@ -14,6 +14,16 @@ function Header({ cartItems, onHandleLogout }) {
     navigate('/login')
   }
 
+  if (!user) {
+    return (
+      <div className={Styles.header_without_user}>
+        <div className={Styles.logo}>
+          <img src="../../../shoesshop-logo.png" alt="shoes-shop-logo" />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={Styles.header}>
       <NavLink to={'/'}>
@@ -21,30 +31,28 @@ function Header({ cartItems, onHandleLogout }) {
           <img src="../../../shoesshop-logo.png" alt="shoes-shop-logo" />
         </div>
       </NavLink>
-      {user ? (
-        <div className={Styles.header_container}>
-          <div className={Styles.header_search}>
-            <input
-              type="text"
-              className={Styles.search_input}
-              placeholder="Enter your search shoes"
-              onChange={(e) => dispatch(searchByText(e.target.value))}
-            />
-          </div>
-          <div className={Styles.right_side}>
-            <NavLink to="/cart">
-              {cartItems.length !== 0 && <span>{cartItems.length}</span>}
-              <i className="fa-solid fa-cart-shopping"></i>
-            </NavLink>
-            <NavLink>
-              <i
-                className="fa-solid fa-right-from-bracket"
-                onClick={handleLogout}
-              ></i>
-            </NavLink>
-          </div>
+      <div className={Styles.header_container}>
+        <div className={Styles.header_search}>
+          <input
+            type="text"
+            className={Styles.search_input}
+            placeholder="Enter your search shoes"
+            onChange={(e) => dispatch(searchByText(e.target.value))}
+          />
         </div>
-      ) : null}
+        <div className={Styles.right_side}>
+          <NavLink to="/cart">
+            {cartItems.length !== 0 && <span>{cartItems.length}</span>}
+            <i className="fa-solid fa-cart-shopping"></i>
+          </NavLink>
+          <NavLink>
+            <i
+              className="fa-solid fa-right-from-bracket"
+              onClick={handleLogout}
+            ></i>
+          </NavLink>
+        </div>
+      </div>
     </div>
   )
 }

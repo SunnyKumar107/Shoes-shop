@@ -1,9 +1,16 @@
 .card_container {
+  margin-top: 5em;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-left: 11rem;
-  margin-top: 1rem;
+  padding: 1.5em;
   z-index: -2;
-  background-color: #f8f9fa;
+}
+
+@media (max-width: 500px) {
+  .card_container {
+    justify-content: center;
+    margin-left: 0;
+  }
 }

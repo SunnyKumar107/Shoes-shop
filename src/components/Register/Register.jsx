@@ -23,7 +23,7 @@ const Register = ({ onHandleRegister }) => {
     setLoader(true)
     setTimeout(() => {
       setLoader(false)
-    }, 1500)
+    }, 1000)
   }, [])
 
   const handleSubmit = async (e) => {

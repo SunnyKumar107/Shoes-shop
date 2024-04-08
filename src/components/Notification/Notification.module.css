@@ -1,6 +1,6 @@
 .notification_hide {
   padding: 0.3em 2em;
-  position: absolute;
+  position: fixed;
   top: 3em;
   left: -55em;
   z-index: 5;
@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   width: 50em;
-  border-left: 3px solid;
+  border-left: 2px solid;
   background-color: #fff;
   font-size: 1.1rem;
   font-weight: 600;
@@ -19,7 +19,7 @@
 
 .notification_display {
   padding: 0.3em 2em;
-  position: absolute;
+  position: fixed;
   top: 3em;
   left: 10.8rem;
   z-index: 5;
@@ -38,10 +38,30 @@
 
 .notification_remove {
   cursor: pointer;
-  color: #444444;
+  color: #808080;
   font-size: 1.1rem;
 }
 
 .notification_remove:hover {
   color: #000;
+}
+
+@media (max-width: 500px) {
+  .notification_hide {
+    top: 1em;
+    left: -20em;
+    height: 4em;
+    width: 20em;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .notification_display {
+    top: 1em;
+    left: 1em;
+    height: 4em;
+    width: 20em;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
 }

@@ -3,17 +3,28 @@
   align-items: center;
   background-color: #fff;
   border-bottom: 2px solid #f3f3f3;
+  width: 100%;
   height: 5em;
   padding: 1em 0;
   z-index: 2;
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 
-.header .logo {
-  width: 13vw;
+.header_without_user {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 2px solid #f3f3f3;
+  width: 100%;
+  height: 5em;
+  padding: 1em 0;
+  position: relative;
+}
+
+.logo {
+  margin-left: 3.5em;
   overflow: hidden;
-  text-align: center;
 }
 
 .logo img {
@@ -21,7 +32,7 @@
 }
 
 .header .header_container {
-  width: 87vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0 5em;
@@ -32,15 +43,12 @@
   border: none;
   background: #f7f6f6;
   outline: none;
-  margin-right: 20px;
   border-radius: 5px;
   position: relative;
   width: 14rem;
 }
 
 .right_side {
-  width: 7rem;
-  margin-left: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,21 +57,71 @@
 .right_side span {
   padding: 1px 5px;
   border-radius: 12px;
-  float: right;
-  margin-left: -10px;
-  margin-top: -10px;
   background-color: #fc0505;
   color: #fff;
   font-weight: 600;
   font-size: small;
   position: relative;
+  top: -18px;
+  right: -108px;
   z-index: 2;
 }
 
 .right_side i {
   font-size: 1.5rem;
+  margin-left: 3em;
 }
 
 .right_side i:hover {
   color: #000;
+}
+
+@media (max-width: 900px) {
+  .logo {
+    margin-left: 2em;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 1em 1em;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+  .logo img {
+    width: 3em;
+  }
+
+  .header .header_container {
+    padding: 0 1em;
+  }
+
+  .header_search input {
+    padding: 8px 12px;
+    width: 12rem;
+  }
+
+  .right_side {
+    margin-left: 0;
+  }
+
+  .right_side span {
+    padding: 2px 5px;
+    border-radius: 12px;
+    background-color: #fc0505;
+    color: #fff;
+    font-weight: 200;
+    font-size: 0.6rem;
+    position: fixed;
+    top: 20px;
+    right: 60px;
+    z-index: 2;
+  }
+
+  .right_side i {
+    font-size: 1.3rem;
+    margin-left: 1.5em;
+  }
 }

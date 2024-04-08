@@ -9,6 +9,7 @@
   flex-direction: column;
   color: #3b3b3b;
   padding: 5.5em 2em;
+  transition: 0.5s;
 }
 
 .filter_type h3 {
@@ -31,9 +32,11 @@
   cursor: pointer;
 }
 
-/* .category_type {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 8.5rem;
-} */
+@media (max-width: 500px) {
+  .sideBar {
+    position: fixed;
+    left: -12em;
+    top: 0;
+    transition: 0.5s;
+  }
+}
