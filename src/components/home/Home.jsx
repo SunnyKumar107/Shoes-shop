@@ -4,15 +4,17 @@ import SideBar from '../sideBar/SideBar'
 import propTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 function Home({ products }) {
   const user = useSelector((state) => state.user)
   const navigate = useNavigate()
 
-  if (!user) {
-    navigate('/login')
-    return null
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+  }, [])
 
   return (
     <div>

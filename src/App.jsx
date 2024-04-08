@@ -6,7 +6,7 @@ import ProductDetails from './components/productDetails/ProductDetails'
 import { useSelector, useDispatch } from 'react-redux'
 import { initializeProducts } from './reducers/productReducer'
 import LoginPage from './components/loginPage/LoginPage'
-import { initializeUser, loginUser, logoutUser } from './reducers/loginReducer'
+import { initializeUser, loginUser } from './reducers/loginReducer'
 import { initializeCarts } from './reducers/cartsReducer'
 import Register from './components/Register/Register'
 import usersService from './services/users'
@@ -40,10 +40,6 @@ function App() {
     }
   }
 
-  const handleLogout = () => {
-    dispatch(logoutUser())
-  }
-
   const handleRegister = async ({ email, name, password }) => {
     try {
       const newUser = await usersService.create({
@@ -59,7 +55,7 @@ function App() {
 
   return (
     <Router>
-      <Header cartItems={cartItems} onHandleLogout={handleLogout} />
+      <Header cartItems={cartItems} />
       <Notification />
       <Routes>
         <Route path="/" element={<Home products={products} />} />

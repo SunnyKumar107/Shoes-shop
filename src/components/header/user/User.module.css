@@ -1,0 +1,74 @@
+.login_user {
+  background-color: #fff;
+  height: 16em;
+  width: 15em;
+  position: absolute;
+  top: 5em;
+  right: 0;
+  padding: 1em;
+  overflow: hidden;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: 2px solid #f3f3f3;
+  border-bottom: 2px solid #f3f3f3;
+  transition: 0.5s;
+}
+
+.login_user h3 {
+  margin-bottom: 1em;
+  color: #5f5f5f;
+  font-size: 1rem;
+}
+
+.login_user p {
+  font-size: 0.9rem;
+  color: #464545;
+  margin-bottom: 0.5em;
+}
+
+.login_user .logout_btn {
+  border: none;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  margin-top: 1.5em;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #313131;
+}
+
+.login_user .logout_btn span {
+  width: 3em;
+  height: 3em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  background-color: #313131;
+  margin-right: 0.5em;
+}
+
+.login_user .logout_btn span:hover {
+  background-color: #464545;
+}
+
+.login_user .logout_btn:hover {
+  color: #464545;
+}
+
+.del_account_btn {
+  color: #d60000;
+  margin-top: 2em;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: #ffc3b4;
+  padding: 0.5em 0;
+  border-radius: 20px;
+  width: 12em;
+  cursor: pointer;
+}

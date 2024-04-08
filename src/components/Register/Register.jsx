@@ -23,7 +23,7 @@ const Register = ({ onHandleRegister }) => {
     setLoader(true)
     setTimeout(() => {
       setLoader(false)
-    }, 1000)
+    }, 500)
   }, [])
 
   const handleSubmit = async (e) => {
@@ -89,7 +89,9 @@ const Register = ({ onHandleRegister }) => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button className={Styles.register_btn} type="submit">
+          Register
+        </button>
         <div className={Styles.have_or_not}>
           <p>Already have an account?</p>{' '}
           <NavLink to="/login">

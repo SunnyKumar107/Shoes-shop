@@ -18,10 +18,11 @@ const Cart = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  if (!user) {
-    navigate('/login')
-    return null
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(initializeCarts)

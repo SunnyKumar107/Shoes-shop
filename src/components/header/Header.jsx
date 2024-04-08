@@ -1,17 +1,18 @@
 import Styles from './Header.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchByText } from '../../reducers/productReducer'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import propTypes from 'prop-types'
+import { useState } from 'react'
+import User from './user/User'
 
-function Header({ cartItems, onHandleLogout }) {
+function Header({ cartItems }) {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [showUserInfo, setShowUserInfo] = useState(false)
 
-  const handleLogout = async () => {
-    await onHandleLogout()
-    navigate('/login')
+  const toggleShow = () => {
+    setShowUserInfo(!showUserInfo)
   }
 
   if (!user) {
@@ -46,20 +47,21 @@ function Header({ cartItems, onHandleLogout }) {
             <i className="fa-solid fa-cart-shopping"></i>
           </NavLink>
           <NavLink>
-            <i
-              className="fa-solid fa-right-from-bracket"
-              onClick={handleLogout}
-            ></i>
+            {showUserInfo ? (
+              <i className="fa-solid fa-xmark" onClick={toggleShow}></i>
+            ) : (
+              <i className="fa-solid fa-user" onClick={toggleShow}></i>
+            )}
           </NavLink>
         </div>
       </div>
+      {showUserInfo && <User />}
     </div>
   )
 }
 
 Header.propTypes = {
-  cartItems: propTypes.array.isRequired,
-  onHandleLogout: propTypes.func.isRequired
+  cartItems: propTypes.array.isRequired
 }
 
 export default Header

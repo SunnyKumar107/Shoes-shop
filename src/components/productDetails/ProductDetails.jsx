@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Card from '../card/Card'
 import Styles from './ProductDetails.module.css'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { updateCart } from '../../reducers/cartsReducer'
 import { TailSpin } from 'react-loader-spinner'
 import { addNotification } from '../../reducers/notificationReducer'
@@ -16,10 +16,11 @@ function ProductDetails() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  if (!user) {
-    navigate('/login')
-    return null
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+  }, [])
 
   const id = useParams().id
   const product = products.find((p) => p.id === id)

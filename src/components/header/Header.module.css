@@ -51,7 +51,8 @@
 .right_side {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 12em;
 }
 
 .right_side span {
@@ -61,15 +62,14 @@
   color: #fff;
   font-weight: 600;
   font-size: small;
-  position: relative;
-  top: -18px;
-  right: -108px;
+  position: absolute;
+  top: 17px;
+  right: 200px;
   z-index: 2;
 }
 
 .right_side i {
   font-size: 1.5rem;
-  margin-left: 3em;
 }
 
 .right_side i:hover {
@@ -99,7 +99,7 @@
   }
 
   .header .header_container {
-    padding: 0 1em;
+    padding: 0 0.5em;
   }
 
   .header_search input {
@@ -108,24 +108,20 @@
   }
 
   .right_side {
-    margin-left: 0;
+    width: 5em;
+    justify-content: space-between;
   }
 
   .right_side span {
     padding: 2px 5px;
-    border-radius: 12px;
-    background-color: #fc0505;
-    color: #fff;
     font-weight: 200;
     font-size: 0.6rem;
-    position: fixed;
-    top: 20px;
-    right: 60px;
+    top: 19px;
+    right: 73px;
     z-index: 2;
   }
 
   .right_side i {
     font-size: 1.3rem;
-    margin-left: 1.5em;
   }
 }

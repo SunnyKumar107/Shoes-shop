@@ -36,7 +36,7 @@
   font-size: 16px;
 }
 
-button {
+.register_btn {
   width: 100%;
   padding: 12px;
   background-color: #007bff;
@@ -48,7 +48,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.register_btn:hover {
   background-color: #0056b3;
 }
 

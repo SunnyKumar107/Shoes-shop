@@ -22,7 +22,7 @@ const LoginPage = ({ onHandleLogin }) => {
     setLoader(true)
     setTimeout(() => {
       setLoader(false)
-    }, 1000)
+    }, 500)
   }, [])
 
   const handleSubmit = async (e) => {
@@ -78,7 +78,9 @@ const LoginPage = ({ onHandleLogin }) => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className={Styles.login_btn} type="submit">
+          Login
+        </button>
         <div className={Styles.have_or_not}>
           <p>Don&apos;t have an account?</p>{' '}
           <NavLink to="/register">
