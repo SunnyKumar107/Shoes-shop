@@ -84,7 +84,11 @@
 
 @media (max-width: 500px) {
   .header {
-    padding: 1em 1em;
+    padding: 1em;
+  }
+
+  .header_without_user {
+    padding: 1em;
   }
 
   .logo {
