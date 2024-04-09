@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { TailSpin } from 'react-loader-spinner'
 import { useNavigate } from 'react-router-dom'
 import { logoutUser } from '../../../reducers/loginReducer'
+import userService from '../../../services/users'
+import { addNotification } from '../../../reducers/notificationReducer'
 
 const User = () => {
   const user = useSelector((state) => state.user)
@@ -16,16 +18,26 @@ const User = () => {
     setLogoutLoad(true)
     setTimeout(() => {
       dispatch(logoutUser())
+      dispatch(addNotification(`Goodbye ${user.name}!`, 'success', 5))
       navigate('/login')
       setLogoutLoad(false)
     }, 1000)
   }
 
-  const handleDeleteAccount = () => {
+  const handleDeleteAccount = async () => {
     setDelLoad(true)
-    setTimeout(() => {
+    try {
+      await userService.deleteUser(user.id)
+      setTimeout(() => {
+        dispatch(logoutUser())
+        dispatch(addNotification('Account deleted!', 'success', 5))
+        navigate('/login')
+        setLogoutLoad(false)
+      }, 1000)
+    } catch (error) {
+      dispatch(addNotification('Some error happend', 'error', 5))
       setDelLoad(false)
-    }, 1000)
+    }
   }
 
   return (

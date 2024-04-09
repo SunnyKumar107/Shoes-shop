@@ -54,7 +54,7 @@ const Register = ({ onHandleRegister }) => {
     <div className={Styles.register_container}>
       <form className={Styles.register_form} onSubmit={handleSubmit}>
         <h2>Register</h2>
-        {notification && (
+        {notification && notification.type === 'authError' && (
           <div className={Styles.register_notification}>
             <p>{notification.message}</p>
           </div>

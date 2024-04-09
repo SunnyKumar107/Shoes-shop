@@ -1,6 +1,7 @@
 const usersRouter = require('express').Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const middleWare = require('../utils/middleware')
 
 usersRouter.get('/', async (request, response, next) => {
   try {
@@ -45,5 +46,25 @@ usersRouter.post('/', async (request, response, next) => {
     next(error)
   }
 })
+
+usersRouter.delete(
+  '/:id',
+  middleWare.userExtractor,
+  async (request, response, next) => {
+    try {
+      const user = request.user
+
+      if (!user) {
+        return response.status(404).json({ error: 'user not found' })
+      }
+      console.log(user)
+
+      await User.findByIdAndDelete(request.params.id)
+      response.status(204).end()
+    } catch (error) {
+      next(error)
+    }
+  }
+)
 
 module.exports = usersRouter

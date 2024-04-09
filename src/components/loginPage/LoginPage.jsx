@@ -53,7 +53,7 @@ const LoginPage = ({ onHandleLogin }) => {
     <div className={Styles.login_container}>
       <form className={Styles.login_form} onSubmit={handleSubmit}>
         <h2>Login</h2>
-        {notification && (
+        {notification && notification.type === 'authError' && (
           <div className={Styles.auth_notification}>
             <p>{notification.message}</p>
           </div>

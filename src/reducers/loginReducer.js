@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import loginService from '../services/authentication'
+import userService from '../services/users'
 
 const loginSlice = createSlice({
   name: 'authentication',
@@ -25,6 +26,7 @@ export const initializeUser = () => {
     if (loggedUserJson) {
       const user = JSON.parse(loggedUserJson)
       dispatch(userInit(user))
+      userService.setToken(user.token)
     }
   }
 }
@@ -34,7 +36,7 @@ export const loginUser = (authData) => {
     const user = await loginService.authentication(authData)
     dispatch(login(user))
     window.localStorage.setItem('loggedInShopAppUser', JSON.stringify(user))
-
+    userService.setToken(user.token)
     return user
   }
 }

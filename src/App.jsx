@@ -36,7 +36,7 @@ function App() {
       }
       return client
     } catch (error) {
-      dispatch(addNotification('Invalid credentials', 'error', 5))
+      dispatch(addNotification('Invalid credentials', 'authError', 5))
     }
   }
 
@@ -47,9 +47,10 @@ function App() {
         name: name,
         password: password
       })
+      dispatch(addNotification('Account created!', 'success', 5))
       return newUser
     } catch (error) {
-      dispatch(addNotification('Some error happend', 'error', 5))
+      dispatch(addNotification('Some error happend', 'authError', 5))
     }
   }
 

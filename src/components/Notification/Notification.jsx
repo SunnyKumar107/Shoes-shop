@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react'
 
 const Notification = () => {
   const notification = useSelector((state) => state.notification)
-  const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [msg, setMsg] = useState(null)
-  const [type, setType] = useState(null)
+  const [type, setType] = useState('success')
 
   useEffect(() => {
     if (notification) {
@@ -25,7 +24,7 @@ const Notification = () => {
     dispatch(removeNotification())
   }
 
-  if (!user) {
+  if (type === 'authError') {
     return null
   }
 

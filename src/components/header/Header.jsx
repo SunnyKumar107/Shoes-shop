@@ -3,13 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { searchByText } from '../../reducers/productReducer'
 import { NavLink } from 'react-router-dom'
 import propTypes from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import User from './user/User'
 
 function Header({ cartItems }) {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [showUserInfo, setShowUserInfo] = useState(false)
+
+  useEffect(() => {
+    setShowUserInfo(false)
+  }, [user])
 
   const toggleShow = () => {
     setShowUserInfo(!showUserInfo)

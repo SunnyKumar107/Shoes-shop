@@ -13,6 +13,7 @@ const loginRouter = require('./controllers/login')
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
+app.use(middleware.tokenExtractor)
 
 const mongoUrl = config.MONGODB_URI
 mongoose

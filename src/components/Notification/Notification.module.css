@@ -2,7 +2,7 @@
   padding: 0.3em 2em;
   position: fixed;
   top: 3em;
-  left: -55em;
+  left: -51em;
   z-index: 5;
   box-shadow: 2px 0 10px #9b9b9b;
   height: 4em;
@@ -12,6 +12,7 @@
   width: 50em;
   border-left: 2px solid;
   background-color: #fff;
+  color: #00d10a;
   font-size: 1.1rem;
   font-weight: 600;
   transition: 0.5s;
@@ -31,6 +32,7 @@
   width: 50em;
   border-left: 3px solid;
   background-color: #fff;
+  color: #00d10a;
   font-size: 1.1rem;
   font-weight: 600;
   transition: 0.5s;
