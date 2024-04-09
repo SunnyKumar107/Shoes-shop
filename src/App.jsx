@@ -36,7 +36,17 @@ function App() {
       }
       return client
     } catch (error) {
-      dispatch(addNotification('Invalid credentials', 'authError', 5))
+      dispatch(
+        addNotification(
+          `${
+            error.response.data.error
+              ? error.response.data.error
+              : 'Some error happend'
+          }`,
+          'authError',
+          5
+        )
+      )
     }
   }
 
@@ -50,7 +60,17 @@ function App() {
       dispatch(addNotification('Account created!', 'success', 5))
       return newUser
     } catch (error) {
-      dispatch(addNotification('Some error happend', 'authError', 5))
+      dispatch(
+        addNotification(
+          `${
+            error.response.data.error
+              ? error.response.data.error
+              : 'Some error happend'
+          }`,
+          'authError',
+          5
+        )
+      )
     }
   }
 

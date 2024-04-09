@@ -45,7 +45,13 @@ const Register = ({ onHandleRegister }) => {
   if (loader) {
     return (
       <div className={Styles.loader_register}>
-        <Oval visible={true} width="50" color="#007bff" strokeWidth="4" />
+        <Oval
+          visible={true}
+          width="50"
+          color="#007bff"
+          secondaryColor="#acacac"
+          strokeWidth="4"
+        />
       </div>
     )
   }
@@ -62,7 +68,7 @@ const Register = ({ onHandleRegister }) => {
         <div className={Styles.input_group}>
           <label htmlFor="email">Email</label>
           <input
-            type="text"
+            type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

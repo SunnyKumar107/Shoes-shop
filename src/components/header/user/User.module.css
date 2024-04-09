@@ -67,8 +67,11 @@
   font-weight: 600;
   font-size: 0.9rem;
   background-color: #ffc3b4;
-  padding: 0.5em 0;
+  padding: 0.5em;
   border-radius: 20px;
   width: 12em;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

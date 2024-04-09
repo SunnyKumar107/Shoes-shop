@@ -20,6 +20,10 @@ li {
   list-style: none;
 }
 
+input {
+  outline-color: #5e5e5e;
+}
+
 button {
   cursor: pointer;
   color: #fff;
