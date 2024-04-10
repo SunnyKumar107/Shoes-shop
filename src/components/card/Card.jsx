@@ -14,9 +14,11 @@ function Card({ id, img, title, newPrice, prevPrice, star }) {
     return (
       <div className={Styles.loader_card}>
         <div className={Styles.loader_card_img}></div>
-        <div className={Styles.loader_cart_title}></div>
-        <div className={Styles.loader_cart_star}></div>
-        <div className={Styles.loader_cart_price}></div>
+        <div className={Styles.loader_cart_info}>
+          <div className={Styles.loader_cart_title}></div>
+          <div className={Styles.loader_cart_star}></div>
+          <div className={Styles.loader_cart_price}></div>
+        </div>
       </div>
     )
   }

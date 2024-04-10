@@ -57,7 +57,6 @@ usersRouter.delete(
       if (!user) {
         return response.status(404).json({ error: 'user not found' })
       }
-      console.log(user)
 
       await User.findByIdAndDelete(request.params.id)
       response.status(204).end()
