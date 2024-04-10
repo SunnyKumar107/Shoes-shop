@@ -70,7 +70,7 @@ const LoginPage = ({ onHandleLogin }) => {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.toLowerCase())}
             required
           />
         </div>
