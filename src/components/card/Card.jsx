@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import propTypes from 'prop-types'
 
 function Card({ product }) {
-  if (!product) {
+  if (!product || !product.img) {
     return (
       <div className={Styles.loader_card}>
         <div className={Styles.loader_card_img}></div>
@@ -19,7 +19,9 @@ function Card({ product }) {
   return (
     <div className={Styles.card}>
       <NavLink to={`/productDetails/${product.id}`}>
-        <img src={product.img} alt="shoe" className={Styles.card_img} />
+        <div className={Styles.card_img_container}>
+          <img src={product.img} alt="shoe" className={Styles.card_img} />
+        </div>
       </NavLink>
       <div className={Styles.card_details}>
         <NavLink to={`/productDetails/${product.id}`}>

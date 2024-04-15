@@ -17,11 +17,9 @@ import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   const cartItems = useSelector((state) => state.cart)
-
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(initializeProducts())
     dispatch(initializeUser())
     dispatch(initializeCarts())
   }, [dispatch])
