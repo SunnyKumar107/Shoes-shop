@@ -34,7 +34,6 @@ function Header({ cartItems }) {
           <img src="../../../shoesshop-logo.png" alt="shoes-shop-logo" />
         </div>
       </NavLink>
-
       <div className={Styles.right_side}>
         <NavLink to="/cart">
           {cartItems.length !== 0 && <span>{cartItems.length}</span>}
