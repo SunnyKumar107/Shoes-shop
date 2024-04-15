@@ -13,6 +13,7 @@ import usersService from './services/users'
 import Cart from './components/productCart/Cart'
 import Notification from './components/Notification/Notification'
 import { addNotification } from './reducers/notificationReducer'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   const cartItems = useSelector((state) => state.cart)
@@ -75,6 +76,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Header cartItems={cartItems} />
       <Notification />
       <Routes>
