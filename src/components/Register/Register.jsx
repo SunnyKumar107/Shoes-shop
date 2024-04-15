@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Styles from './Register.module.css'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { Oval } from 'react-loader-spinner'
+import { TailSpin } from 'react-loader-spinner'
 import { useSelector } from 'react-redux'
 import propTypes from 'prop-types'
 
@@ -14,46 +14,24 @@ const Register = ({ onHandleRegister }) => {
   const notification = useSelector((state) => state.notification)
   const user = useSelector((state) => state.user)
 
-  if (user) {
-    navigate('/')
-    return null
-  }
-
   useEffect(() => {
-    setLoader(true)
-    setTimeout(() => {
-      setLoader(false)
-    }, 500)
+    if (user) {
+      navigate('/')
+    }
   }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoader(true)
-    setTimeout(() => {
-      setLoader(false)
-    }, 1500)
     const client = await onHandleRegister({ email, name, password })
 
+    setLoader(false)
     if (client) {
       navigate('/login')
     }
     setEmail('')
     setName('')
     setPassword('')
-  }
-
-  if (loader) {
-    return (
-      <div className={Styles.loader_register}>
-        <Oval
-          visible={true}
-          width="50"
-          color="#007bff"
-          secondaryColor="#acacac"
-          strokeWidth="4"
-        />
-      </div>
-    )
   }
 
   return (
@@ -96,7 +74,17 @@ const Register = ({ onHandleRegister }) => {
           />
         </div>
         <button className={Styles.register_btn} type="submit">
-          Register
+          {loader ? (
+            <TailSpin
+              height="15"
+              visible={true}
+              width="100%"
+              color="#fff"
+              strokeWidth="4"
+            />
+          ) : (
+            'Register'
+          )}
         </button>
         <div className={Styles.have_or_not}>
           <p>Already have an account?</p>{' '}

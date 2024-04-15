@@ -15,7 +15,6 @@ import Notification from './components/Notification/Notification'
 import { addNotification } from './reducers/notificationReducer'
 
 function App() {
-  const products = useSelector((state) => state.products)
   const cartItems = useSelector((state) => state.cart)
 
   const dispatch = useDispatch()
@@ -32,7 +31,7 @@ function App() {
         loginUser({ email: email, password: password })
       )
       if (client) {
-        dispatch(addNotification(`Logged in ${client.name}!`, 'success', 5))
+        dispatch(addNotification(`Welcome ${client.name}!`, 'success', 5))
       }
       return client
     } catch (error) {
@@ -79,7 +78,7 @@ function App() {
       <Header cartItems={cartItems} />
       <Notification />
       <Routes>
-        <Route path="/" element={<Home products={products} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route

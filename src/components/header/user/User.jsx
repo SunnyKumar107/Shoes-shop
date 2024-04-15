@@ -21,19 +21,17 @@ const User = () => {
       dispatch(addNotification(`Goodbye ${user.name}!`, 'success', 5))
       navigate('/login')
       setLogoutLoad(false)
-    }, 1000)
+    }, 500)
   }
 
   const handleDeleteAccount = async () => {
     setDelLoad(true)
     try {
       await userService.deleteUser(user.id)
-      setTimeout(() => {
-        dispatch(logoutUser())
-        dispatch(addNotification('Account deleted!', 'success', 5))
-        navigate('/login')
-        setLogoutLoad(false)
-      }, 1000)
+      dispatch(logoutUser())
+      dispatch(addNotification('Account deleted!', 'success', 5))
+      navigate('/login')
+      setDelLoad(false)
     } catch (error) {
       dispatch(addNotification('Some error happend', 'error', 5))
       setDelLoad(false)
@@ -50,9 +48,9 @@ const User = () => {
         <span>
           {logoutLoad ? (
             <TailSpin
-              height="15"
+              height="14"
               visible={true}
-              width="90%"
+              width="100%"
               color="#fff"
               strokeWidth="4"
             />
@@ -67,7 +65,7 @@ const User = () => {
           <TailSpin
             height="15"
             visible={true}
-            width="90%"
+            width="100%"
             color="#ff0000"
             strokeWidth="4"
           />

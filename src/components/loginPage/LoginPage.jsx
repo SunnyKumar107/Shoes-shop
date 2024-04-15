@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import Styles from './LoginPage.module.css'
 import { useEffect, useState } from 'react'
-import { Oval } from 'react-loader-spinner'
+import { TailSpin } from 'react-loader-spinner'
 import { useSelector } from 'react-redux'
 import propTypes from 'prop-types'
 
@@ -13,46 +13,24 @@ const LoginPage = ({ onHandleLogin }) => {
   const notification = useSelector((state) => state.notification)
   const user = useSelector((state) => state.user)
 
-  if (user) {
-    navigate('/')
-    return null
-  }
-
   useEffect(() => {
-    setLoader(true)
-    setTimeout(() => {
-      setLoader(false)
-    }, 500)
+    if (user) {
+      navigate('/')
+    }
   }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     setLoader(true)
-    setTimeout(() => {
-      setLoader(false)
-    }, 1500)
 
     const user = await onHandleLogin({ email, password })
+    setLoader(false)
     if (user) {
       navigate('/')
     }
     setEmail('')
     setPassword('')
-  }
-
-  if (loader) {
-    return (
-      <div className={Styles.loader_login}>
-        <Oval
-          visible={true}
-          width="50"
-          color="#007bff"
-          secondaryColor="#acacac"
-          strokeWidth="4"
-        />
-      </div>
-    )
   }
 
   return (
@@ -85,7 +63,17 @@ const LoginPage = ({ onHandleLogin }) => {
           />
         </div>
         <button className={Styles.login_btn} type="submit">
-          Login
+          {loader ? (
+            <TailSpin
+              height="15"
+              visible={true}
+              width="100%"
+              color="#fff"
+              strokeWidth="4"
+            />
+          ) : (
+            'Login'
+          )}
         </button>
         <div className={Styles.have_or_not}>
           <p>Don&apos;t have an account?</p>{' '}

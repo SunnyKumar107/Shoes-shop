@@ -129,16 +129,8 @@ function ProductDetails() {
           <p>Find the perfect match for your preferences and needs.</p>
         </div>
         <div className={Styles.similar_product}>
-          {similarProduct.map((e) => (
-            <Card
-              id={e.id}
-              img={e.img}
-              title={e.title}
-              prevPrice={e.prevPrice}
-              newPrice={e.newPrice}
-              star={e.star}
-              key={e.id}
-            />
+          {similarProduct.map((product) => (
+            <Card product={product} key={product.id} />
           ))}
         </div>
       </footer>

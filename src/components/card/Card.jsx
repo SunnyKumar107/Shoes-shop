@@ -1,16 +1,9 @@
-import React, { useState } from 'react'
 import Styles from './Card.module.css'
 import { NavLink } from 'react-router-dom'
 import propTypes from 'prop-types'
 
-function Card({ id, img, title, newPrice, prevPrice, star }) {
-  const [loader, setLoader] = useState(true)
-
-  setTimeout(() => {
-    setLoader(false)
-  }, 1000)
-
-  if (loader) {
+function Card({ product }) {
+  if (!product) {
     return (
       <div className={Styles.loader_card}>
         <div className={Styles.loader_card_img}></div>
@@ -25,21 +18,21 @@ function Card({ id, img, title, newPrice, prevPrice, star }) {
 
   return (
     <div className={Styles.card}>
-      <NavLink to={`/productDetails/${id}`}>
-        <img src={img} alt="shoe" className={Styles.card_img} />
+      <NavLink to={`/productDetails/${product.id}`}>
+        <img src={product.img} alt="shoe" className={Styles.card_img} />
       </NavLink>
       <div className={Styles.card_details}>
-        <NavLink to={`/productDetails/${id}`}>
-          <h3 className={Styles.card_title}>{title}</h3>
+        <NavLink to={`/productDetails/${product.id}`}>
+          <h3 className={Styles.card_title}>{product.title}</h3>
         </NavLink>
         <div className={Styles.card_reviews}>
           <span>
-            <i className="fa-regular fa-star"></i> {star}
+            <i className="fa-regular fa-star"></i> {product.star}
           </span>
         </div>
         <div className={Styles.card_price}>
           <div className={Styles.price}>
-            <del>{prevPrice}</del> ${newPrice}
+            <del>{product.prevPrice}</del> ${product.newPrice}
           </div>
           <div className={Styles.bag}>
             <i className="fa-solid fa-bag-shopping"></i>
@@ -51,12 +44,7 @@ function Card({ id, img, title, newPrice, prevPrice, star }) {
 }
 
 Card.propTypes = {
-  id: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
-  img: propTypes.string.isRequired,
-  prevPrice: propTypes.string.isRequired,
-  newPrice: propTypes.string.isRequired,
-  star: propTypes.string.isRequired
+  product: propTypes.object.isRequired
 }
 
 export default Card
