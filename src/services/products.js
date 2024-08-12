@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = '/api/products'
+const baseUrl = `${import.meta.env.VITE_BASE_URL}/api/products`
 
 const getAll = async () => {
   const response = await axios.get(baseUrl)
